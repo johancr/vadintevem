@@ -9,6 +9,6 @@ public class DefaultGuiceServletContextListener extends GuiceServletContextListe
 
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(GuiceModuleLoader.load());
+        return Guice.createInjector(new DefaultServletModule(), GuiceModuleLoader.load());
     }
 }
