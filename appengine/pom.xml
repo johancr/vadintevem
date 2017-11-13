@@ -27,6 +27,12 @@
         </dependency>
 
         <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>react</artifactId>
+            <type>war</type>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
         </dependency>
@@ -115,6 +121,10 @@
                         <overlay>
                             <groupId>vadintevem</groupId>
                             <artifactId>servlet</artifactId>
+                        </overlay>
+                        <overlay>
+                            <groupId>vadintevem</groupId>
+                            <artifactId>react</artifactId>
                         </overlay>
                     </overlays>
 
