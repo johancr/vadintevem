@@ -26,13 +26,23 @@
         </dependency>
 
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-guice</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
             <artifactId>base</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>entities</artifactId>
         </dependency>
     </dependencies>
 
