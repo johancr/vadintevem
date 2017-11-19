@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import {Provider} from 'react-redux';
-import messages from './reducers/messages.js';
+import message from './reducers/message.js';
 import {createStore} from 'redux';
 import { combineReducers } from 'redux';
 
-let reducers = combineReducers({messages});
+let reducers = combineReducers({message});
 let store = createStore(reducers, window.devToolsExtension
                                     ? window.devToolsExtension()
                                     : f => f);

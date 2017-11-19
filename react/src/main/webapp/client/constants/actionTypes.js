@@ -1,1 +1,1 @@
-export const MESSAGES_LOADED = 'MESSAGES_LOADED';
+export const MESSAGE_LOADED = 'MESSAGE_LOADED';

@@ -11,6 +11,7 @@
         <module>appengine</module>
         <module>base</module>
         <module>react</module>
+        <module>appengine-mock</module>
     </modules>
 
     <groupId>vadintevem</groupId>
