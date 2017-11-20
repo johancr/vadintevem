@@ -1,19 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Message from './Message.jsx';
+import Button from './Button.jsx'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {getNextMessage} from '../actions/message.js';
 
-function MessagePresenter(props) {
+class MessagePresenter extends Component {
 
-    return (
-        <div>
-            <Message content={props.message.content}/>
-        </div>
-    );
+    constructor(props) {
+        super(props);
+        this.nextMessage = this.nextMessage.bind(this);
+    }
+
+    nextMessage() {
+        this.props.getNextMessage();
+    }
+
+    render() {
+
+        return (
+            <div>
+                <Message content={this.props.message.content}/>
+                <Button onClick={this.nextMessage}
+                   title='Next'
+                 />
+            </div>
+        );
+    }
 }
 
 MessagePresenter.propTypes = {
-    message: PropTypes.object
+    message: PropTypes.object,
+    getNextMessage: PropTypes.func
 }
 
 const mapStateToProps = state => {
@@ -21,4 +39,8 @@ const mapStateToProps = state => {
     return {message};
 }
 
-export default connect(mapStateToProps)(MessagePresenter);
+const mapDispatchToProps = {
+        getNextMessage
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessagePresenter);

@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import {Provider} from 'react-redux';
 import message from './reducers/message.js';
-import {createStore} from 'redux';
-import { combineReducers } from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 let reducers = combineReducers({message});
-let store = createStore(reducers, window.devToolsExtension
-                                    ? window.devToolsExtension()
-                                    : f => f);
+let store = createStore(reducers, {}, applyMiddleware(thunkMiddleware),
+                                        window.devToolsExtension
+                                            ? window.devToolsExtension()
+                                            : f => f);
 ReactDOM.render(
     <Provider store={store}>
         <App />
