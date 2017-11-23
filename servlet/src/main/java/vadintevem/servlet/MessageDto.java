@@ -15,4 +15,8 @@ public class MessageDto extends Message {
     public String getContent() {
         return content;
     }
+
+    public static MessageDto from(Message message) {
+        return new MessageDto(message.getContent());
+    }
 }

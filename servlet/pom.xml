@@ -44,6 +44,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>entities</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>reader</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

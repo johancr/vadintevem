@@ -30,6 +30,11 @@
             <artifactId>servlet</artifactId>
             <type>war</type>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>reader-impl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
