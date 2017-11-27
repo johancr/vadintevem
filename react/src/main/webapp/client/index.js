@@ -5,6 +5,8 @@ import {Provider} from 'react-redux';
 import message from './reducers/message.js';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 let reducers = combineReducers({message});
 let store = createStore(reducers, {}, applyMiddleware(thunkMiddleware),
@@ -13,6 +15,8 @@ let store = createStore(reducers, {}, applyMiddleware(thunkMiddleware),
                                             : f => f);
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <MuiThemeProvider>
+            <App />
+        </MuiThemeProvider>
     </Provider>
     , document.getElementById('root'));

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Message from './Message.jsx';
-import Button from './Button.jsx'
+import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getNextMessage} from '../actions/message.js';
@@ -21,8 +21,8 @@ class MessagePresenter extends Component {
         return (
             <div>
                 <Message content={this.props.message.content}/>
-                <Button onClick={this.nextMessage}
-                   title='Next'
+                <RaisedButton onClick={this.nextMessage}
+                    label='Next'
                  />
             </div>
         );

@@ -4,6 +4,7 @@ import fetch from 'isomorphic-fetch';
 import {MESSAGE_LOADED} from '../constants/actionTypes.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import AppBar from 'material-ui/AppBar'
 
 class App extends React.Component {
 
@@ -14,7 +15,9 @@ class App extends React.Component {
   render() {
     return (
      <div>
-        <h1>VIV</h1>
+        <AppBar title='VIV'
+                showMenuIconButton={false}>
+        </AppBar>
         <MessagePresenter />
      </div>
      );
