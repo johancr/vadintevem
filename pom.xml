@@ -12,6 +12,8 @@
         <module>base</module>
         <module>react</module>
         <module>appengine-mock</module>
+        <module>messages</module>
+        <module>messages-inmemory</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -75,6 +77,18 @@
             <dependency>
                 <groupId>vadintevem</groupId>
                 <artifactId>entities</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>messages</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>messages-inmemory</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 

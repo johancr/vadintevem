@@ -9,22 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reader-impl</artifactId>
+    <artifactId>messages-inmemory</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
+            <artifactId>messages</artifactId>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
+            <artifactId>base</artifactId>
         </dependency>
     </dependencies>
 

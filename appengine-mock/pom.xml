@@ -35,6 +35,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>reader-impl</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>messages-inmemory</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
