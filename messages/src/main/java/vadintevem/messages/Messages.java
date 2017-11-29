@@ -2,7 +2,11 @@ package vadintevem.messages;
 
 import vadintevem.entities.Message;
 
+import java.util.Optional;
+
 public interface Messages {
 
-    Message next();
+    void save(Message message);
+
+    Optional<Message> find();
 }

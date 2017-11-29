@@ -4,27 +4,28 @@ import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 
 import java.time.Instant;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class InmemoryMessages implements Messages {
 
-    private static final List<String> MESSAGES = Arrays.asList(
-            "Carpe diem",
-            "Le ciel, c'est les autres",
-            "I have always found that plans are useless, but planning is indispensable"
-    );
+    private static final List<String> MESSAGES = new ArrayList<String>() {{
+        add("Carpe diem");
+        add("Le ciel, c'est les autres");
+        add("I have always found that plans are useless, but planning is indispensable");
+    }};
 
     private final Random generator = new Random(Instant.now().toEpochMilli());
 
     @Override
-    public Message next() {
-        return new Message() {
-            @Override
-            public String getContent() {
-                return MESSAGES.get(Math.abs(generator.nextInt()) % 3);
-            }
-        };
+    public void save(Message message) {
+        MESSAGES.add(message.getContent());
+    }
+
+    @Override
+    public Optional<Message> find() {
+        return Optional.of(Message.of(MESSAGES.get(Math.abs(generator.nextInt()) % 3)));
     }
 }

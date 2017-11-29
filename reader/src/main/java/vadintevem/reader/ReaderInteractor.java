@@ -2,7 +2,9 @@ package vadintevem.reader;
 
 import vadintevem.entities.Message;
 
+import java.util.Optional;
+
 public interface ReaderInteractor {
 
-    Message nextMessage();
+    Optional<Message> findMessage();
 }

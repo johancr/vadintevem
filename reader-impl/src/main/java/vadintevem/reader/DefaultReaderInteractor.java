@@ -4,6 +4,7 @@ import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 
 import javax.inject.Inject;
+import java.util.Optional;
 
 public class DefaultReaderInteractor implements ReaderInteractor {
 
@@ -15,7 +16,7 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     }
 
     @Override
-    public Message nextMessage() {
-        return messages.next();
+    public Optional<Message> findMessage() {
+        return messages.find();
     }
 }

@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>messages-inmemory</artifactId>
+            <artifactId>messages-objectify</artifactId>
         </dependency>
 
         <dependency>
