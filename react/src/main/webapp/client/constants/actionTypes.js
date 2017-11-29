@@ -1,1 +1,2 @@
 export const MESSAGE_LOADED = 'MESSAGE_LOADED';
+export const LOAD_MESSAGE = 'LOAD_MESSAGE';
