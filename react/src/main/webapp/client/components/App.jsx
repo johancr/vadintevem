@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import AppBar from 'material-ui/AppBar'
 import {getNextMessage} from '../actions/message.js';
+import Publisher from './Publisher.jsx';
 
 class App extends React.Component {
 
@@ -20,6 +21,7 @@ class App extends React.Component {
                 showMenuIconButton={false}>
         </AppBar>
         <MessagePresenter />
+        <Publisher />
      </div>
      );
   }

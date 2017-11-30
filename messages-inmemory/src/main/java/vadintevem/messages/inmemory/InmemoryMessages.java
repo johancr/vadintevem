@@ -26,6 +26,6 @@ public class InmemoryMessages implements Messages {
 
     @Override
     public Optional<Message> find() {
-        return Optional.of(Message.of(MESSAGES.get(Math.abs(generator.nextInt()) % 3)));
+        return Optional.of(Message.of(MESSAGES.get(Math.abs(generator.nextInt()) % MESSAGES.size())));
     }
 }

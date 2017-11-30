@@ -40,6 +40,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>messages-inmemory</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>publisher-impl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

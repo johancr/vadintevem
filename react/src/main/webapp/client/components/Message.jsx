@@ -18,11 +18,12 @@ class Message extends Component {
                         marginTop:10,
                         marginBottom: 10,
                         width: 200,
-                        height: 100}}>
+                        height: 100,
+                        overflow: 'scroll'}}>
 
                     {isLoadingMessage
                         ? <CircularProgress style={{ marginTop: 15, marginLeft: 65 }} />
-                        : <p>{content}</p>
+                        : <p style={{maxWidth: '100%', wordWrap: 'break-word'}}>{content}</p>
                     }
                 </Paper>
              </div>

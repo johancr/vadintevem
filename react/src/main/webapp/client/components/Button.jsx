@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default function Button(props) {
 
     return (
-        <button onClick = {props.onClick}>{props.title}</button>
+        <RaisedButton onClick={props.onClick}
+            label={props.label}
+         />
     );
-
 }
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  title: PropTypes.string
+  label: PropTypes.string
 }
