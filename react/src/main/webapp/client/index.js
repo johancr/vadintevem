@@ -4,7 +4,7 @@ import App from './components/App.jsx';
 import {Provider} from 'react-redux';
 import message from './reducers/message.js';
 import isLoadingMessage from './reducers/isLoadingMessage.js';
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import style from './css/index.css';
