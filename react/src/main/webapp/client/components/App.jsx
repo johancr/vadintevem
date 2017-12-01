@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import AppBar from 'material-ui/AppBar'
 import {getNextMessage} from '../actions/message.js';
 import Publisher from './Publisher.jsx';
+import MessageFeed from './MessageFeed.jsx';
 
 class App extends React.Component {
 
@@ -20,6 +21,7 @@ class App extends React.Component {
         <AppBar title='VIV'
                 showMenuIconButton={false}>
         </AppBar>
+        <MessageFeed />
         <MessagePresenter />
         <Publisher />
      </div>

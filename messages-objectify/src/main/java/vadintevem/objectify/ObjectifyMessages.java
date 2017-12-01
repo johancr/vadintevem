@@ -20,7 +20,10 @@ public class ObjectifyMessages implements Messages {
 
     @Override
     public Optional<Message> find() {
-        return Optional.ofNullable(ofy().load().type(MessageEntity.class).list()
-                .get(Math.abs(generator.nextInt()) % ofy().load().type(MessageEntity.class).list().size()));
+        int size = ofy().load().type(MessageEntity.class).list().size();
+        return size == 0
+                ? Optional.empty()
+                : Optional.ofNullable(ofy().load().type(MessageEntity.class).list()
+                    .get(Math.abs(generator.nextInt()) % size));
     }
 }
