@@ -18,8 +18,8 @@ export default function MessageInput(props) {
                                border: 'none',
                                resize: 'none'  }}
                        onChange={props.onChange}
+                       value={props.text}
             />
         </Paper>
     );
-
 }

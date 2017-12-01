@@ -17,6 +17,7 @@ class Publisher extends Component {
 
     publish() {
         this.props.publishMessage(this.state.text);
+        this.setState({text: ''});
     }
 
     onChange(event) {
@@ -26,7 +27,7 @@ class Publisher extends Component {
     render() {
         return (
             <div className={style.container}>
-                <MessageInput onChange={this.onChange} />
+                <MessageInput onChange={this.onChange} text={this.state.text} />
                 <Button onClick={this.publish} label = 'Publish'/>
             </div>
         );
