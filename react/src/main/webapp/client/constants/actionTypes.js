@@ -2,3 +2,5 @@ export const MESSAGE_LOADED = 'MESSAGE_LOADED';
 export const LOAD_MESSAGE = 'LOAD_MESSAGE';
 export const PUBLISH_MESSAGE = 'PUBLISH_MESSAGE';
 export const MESSAGE_PUBLISHED = 'MESSAGE_PUBLISHED';
+
+export const SET_VIEW = 'SET_VIEW';

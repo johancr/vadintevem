@@ -1,0 +1,2 @@
+export const READER_VIEW = 'READER_VIEW';
+export const INTERACTOR_VIEW = 'INTERACTOR_VIEW';

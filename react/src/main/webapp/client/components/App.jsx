@@ -4,10 +4,11 @@ import fetch from 'isomorphic-fetch';
 import {MESSAGE_LOADED} from '../constants/actionTypes.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import AppBar from 'material-ui/AppBar'
 import {getNextMessage} from '../actions/message.js';
 import Publisher from './Publisher.jsx';
 import MessageFeed from './MessageFeed.jsx';
+import Menu from './Menu.jsx';
+import ViewSwitcher from './ViewSwitcher.jsx';
 
 class App extends React.Component {
 
@@ -18,12 +19,8 @@ class App extends React.Component {
   render() {
     return (
      <div>
-        <AppBar title='VIV'
-                showMenuIconButton={false}>
-        </AppBar>
-        <MessageFeed />
-        <MessagePresenter />
-        <Publisher />
+        <Menu />
+        <ViewSwitcher />
      </div>
      );
   }

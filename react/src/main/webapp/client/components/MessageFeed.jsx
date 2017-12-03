@@ -8,11 +8,18 @@ class MessageFeed extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {intervalId: ''};
+
         this.nextMessage = this.nextMessage.bind(this);
     }
 
     componentDidMount() {
-        setInterval(() => this.nextMessage(), 10000);
+        const intervalId = setInterval(() => this.nextMessage(), 10000);
+        this.setState({intervalId: intervalId});
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.intervalId);
     }
 
     nextMessage() {
