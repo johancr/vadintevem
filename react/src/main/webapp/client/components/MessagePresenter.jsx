@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getNextMessage} from '../actions/message.js';
 import Button from './Button.jsx';
+import {saveHistory} from '../actions/history.js';
 
 class MessagePresenter extends Component {
 
@@ -13,6 +14,7 @@ class MessagePresenter extends Component {
     }
 
     nextMessage() {
+        this.props.saveHistory(this.props.message);
         this.props.getNextMessage();
     }
 
@@ -31,7 +33,8 @@ class MessagePresenter extends Component {
 
 MessagePresenter.propTypes = {
     message: PropTypes.object,
-    getNextMessage: PropTypes.func
+    getNextMessage: PropTypes.func,
+    saveHistory: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -40,7 +43,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getNextMessage
+        getNextMessage,
+        saveHistory,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessagePresenter);

@@ -5,7 +5,7 @@ import style from '../css/menu.css';
 import {setView} from '../actions/view.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {READER_VIEW, INTERACTOR_VIEW} from '../constants/views.js';
+import {READER_VIEW, INTERACTOR_VIEW, HISTORY_VIEW} from '../constants/views.js';
 
 class Menu extends Component {
 
@@ -14,6 +14,7 @@ class Menu extends Component {
 
         this.setReaderView = this.setReaderView.bind(this);
         this.setInteractorView = this.setInteractorView.bind(this);
+        this.setHistoryView = this.setHistoryView.bind(this);
     }
 
     setReaderView() {
@@ -24,19 +25,27 @@ class Menu extends Component {
         this.props.setView(INTERACTOR_VIEW);
     }
 
+    setHistoryView() {
+        this.props.setView(HISTORY_VIEW);
+    }
+
     render() {
         return (
             <AppBar title='VIV'
                     showMenuIconButton={false}
                     iconElementRight={
                         <div className={style.menu__buttons}>
-                            <Button label = 'Reader'
+                            <Button label = 'Read'
                                 onClick={this.setReaderView}
                                 disabled={this.props.view === READER_VIEW}
                             />
-                            <Button label = 'Interactor'
+                            <Button label = 'Interact'
                                 onClick={this.setInteractorView}
                                 disabled={this.props.view === INTERACTOR_VIEW}
+                            />
+                            <Button label = 'History'
+                                onClick={this.setHistoryView}
+                                disabled={this.props.view === HISTORY_VIEW}
                             />
                         </div>
                         }>

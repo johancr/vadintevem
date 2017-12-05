@@ -9,27 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reader-impl</artifactId>
+    <artifactId>history-stub</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
+            <artifactId>history</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>history</artifactId>
         </dependency>
     </dependencies>
 

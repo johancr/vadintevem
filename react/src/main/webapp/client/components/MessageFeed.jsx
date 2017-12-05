@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Message from './Message.jsx';
 import {getNextMessage} from '../actions/message.js';
+import {saveHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -23,6 +24,7 @@ class MessageFeed extends Component {
     }
 
     nextMessage() {
+        this.props.saveHistory(this.props.message);
         this.props.getNextMessage();
     }
 
@@ -37,7 +39,8 @@ class MessageFeed extends Component {
 
 MessageFeed.propTypes = {
     message: PropTypes.object,
-    getNextMessage: PropTypes.func
+    getNextMessage: PropTypes.func,
+    saveHistory: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -46,7 +49,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getNextMessage
+        getNextMessage,
+        saveHistory,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageFeed);

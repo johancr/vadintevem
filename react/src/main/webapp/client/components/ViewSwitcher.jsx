@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import ReaderView from './ReaderView.jsx';
 import InteractorView from './InteractorView.jsx';
-import {READER_VIEW} from '../constants/views.js';
+import {READER_VIEW, INTERACTOR_VIEW, HISTORY_VIEW} from '../constants/views.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import HistoryView from './HistoryView.jsx';
 
 class ViewSwitcher extends Component {
 
@@ -14,11 +15,14 @@ class ViewSwitcher extends Component {
     }
 
     renderView() {
-        return (
-            this.props.view === READER_VIEW
-                ? <ReaderView />
-                : <InteractorView />
-        );
+        switch(this.props.view) {
+            case READER_VIEW:
+                return <ReaderView />
+            case INTERACTOR_VIEW:
+                return <InteractorView />
+            case HISTORY_VIEW:
+                return <HistoryView />
+        }
     }
 
     render() {

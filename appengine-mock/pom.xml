@@ -45,6 +45,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>publisher-impl</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>history-stub</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

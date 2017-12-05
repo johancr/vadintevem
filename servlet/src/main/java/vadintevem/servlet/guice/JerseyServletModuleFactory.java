@@ -4,6 +4,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.google.inject.Module;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
+import vadintevem.servlet.HistoryResource;
 import vadintevem.servlet.MessageResource;
 
 import javax.ws.rs.ext.MessageBodyReader;
@@ -19,6 +20,7 @@ public class JerseyServletModuleFactory {
                 bind(MessageBodyReader.class).to(JacksonJsonProvider.class);
                 bind(MessageBodyWriter.class).to(JacksonJsonProvider.class);
                 bind(MessageResource.class);
+                bind(HistoryResource.class);
 
                 serve("/service/*").with(GuiceContainer.class);
             }
