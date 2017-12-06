@@ -11,9 +11,9 @@
         <module>appengine</module>
         <module>base</module>
         <module>react</module>
-        <module>appengine-mock</module>
+        <module>appengine-stub</module>
         <module>messages</module>
-        <module>messages-inmemory</module>
+        <module>messages-stub</module>
         <module>messages-objectify</module>
         <module>test</module>
         <module>publisher</module>
@@ -95,7 +95,7 @@
 
             <dependency>
                 <groupId>vadintevem</groupId>
-                <artifactId>messages-inmemory</artifactId>
+                <artifactId>messages-stub</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 

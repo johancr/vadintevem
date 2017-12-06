@@ -1,7 +1,7 @@
 package vadintevem.servlet;
 
 import vadintevem.publisher.PublisherInteractor;
-import vadintevem.reader.ReaderInteractor;
+import vadintevem.reader.impl.ReaderInteractor;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

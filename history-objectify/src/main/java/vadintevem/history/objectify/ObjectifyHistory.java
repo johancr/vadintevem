@@ -4,7 +4,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
-import vadintevem.objectify.MessageEntity;
+import vadintevem.messages.objectify.MessageEntity;
 
 import java.util.List;
 

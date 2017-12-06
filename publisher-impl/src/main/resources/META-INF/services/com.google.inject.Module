@@ -1,1 +1,1 @@
-vadintevem.publisher.guice.PublisherModule
+vadintevem.publisher.impl.guice.PublisherModule

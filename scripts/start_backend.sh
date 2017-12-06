@@ -1,1 +1,1 @@
-mvn jetty:run -pl appengine-mock
+mvn jetty:run -pl appengine-stub
