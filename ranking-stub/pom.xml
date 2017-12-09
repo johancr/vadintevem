@@ -9,19 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>publisher-impl</artifactId>
+    <artifactId>ranking-stub</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>publisher</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>vadintevem</groupId>
             <artifactId>ranking</artifactId>
@@ -30,6 +20,12 @@
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

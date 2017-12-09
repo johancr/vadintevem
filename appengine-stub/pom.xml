@@ -50,6 +50,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>history-stub</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>ranking-stub</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

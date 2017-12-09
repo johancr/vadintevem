@@ -6,6 +6,7 @@ import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 import vadintevem.servlet.HistoryResource;
 import vadintevem.servlet.MessageResource;
+import vadintevem.servlet.RankingResource;
 
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
@@ -21,6 +22,7 @@ public class JerseyServletModuleFactory {
                 bind(MessageBodyWriter.class).to(JacksonJsonProvider.class);
                 bind(MessageResource.class);
                 bind(HistoryResource.class);
+                bind(RankingResource.class);
 
                 serve("/service/*").with(GuiceContainer.class);
             }

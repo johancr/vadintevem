@@ -21,6 +21,8 @@
         <module>history</module>
         <module>history-stub</module>
         <module>history-objectify</module>
+        <module>ranking</module>
+        <module>ranking-stub</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -138,6 +140,18 @@
             <dependency>
                 <groupId>vadintevem</groupId>
                 <artifactId>history-objectify</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>ranking</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>ranking-stub</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
