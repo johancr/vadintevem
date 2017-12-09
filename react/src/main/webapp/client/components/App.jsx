@@ -9,6 +9,7 @@ import Publisher from './Publisher.jsx';
 import MessageFeed from './MessageFeed.jsx';
 import Menu from './Menu.jsx';
 import ViewSwitcher from './ViewSwitcher.jsx';
+import style from '../css/app.css';
 
 class App extends React.Component {
 
@@ -18,9 +19,11 @@ class App extends React.Component {
 
   render() {
     return (
-     <div>
+     <div className={style.app}>
         <Menu />
-        <ViewSwitcher />
+        <div className={style.app__viewSwitcher}>
+            <ViewSwitcher />
+        </div>
      </div>
      );
   }

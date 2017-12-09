@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar'
 import Button from './Button.jsx';
 import style from '../css/menu.css';
 import {setView} from '../actions/view.js';
@@ -31,25 +30,23 @@ class Menu extends Component {
 
     render() {
         return (
-            <AppBar title='VIV'
-                    showMenuIconButton={false}
-                    iconElementRight={
-                        <div className={style.menu__buttons}>
-                            <Button label = 'Read'
-                                onClick={this.setReaderView}
-                                disabled={this.props.view === READER_VIEW}
-                            />
-                            <Button label = 'Interact'
-                                onClick={this.setInteractorView}
-                                disabled={this.props.view === INTERACTOR_VIEW}
-                            />
-                            <Button label = 'History'
-                                onClick={this.setHistoryView}
-                                disabled={this.props.view === HISTORY_VIEW}
-                            />
-                        </div>
-                        }>
-            </AppBar>
+            <div className={style.menu} >
+                <span className={style.menu__header}>VIV</span>
+                <div className={style.menu__buttons}>
+                        <Button label = 'Read'
+                            onClick={this.setReaderView}
+                            disabled={this.props.view === READER_VIEW}
+                        />
+                        <Button label = 'Interact'
+                            onClick={this.setInteractorView}
+                            disabled={this.props.view === INTERACTOR_VIEW}
+                        />
+                        <Button label = 'History'
+                            onClick={this.setHistoryView}
+                            disabled={this.props.view === HISTORY_VIEW}
+                        />
+                </div>
+            </div>
         );
     }
 }

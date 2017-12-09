@@ -1,4 +1,22 @@
-.menu__buttons > * {
+.menu {
+    display: flex;
+    justify-content: flex-end;
     margin-top: 6px;
+}
+
+.menu__header {
+    flex-grow: 1;
+    font-size: 1.5em;
+    margin-left: 0.5em;
+    color: rgb(0, 188, 212);
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+}
+
+.menu__buttons {
+    margin-top: 5px;
+}
+
+.menu__buttons > * {
     margin-right: 12px;
 }

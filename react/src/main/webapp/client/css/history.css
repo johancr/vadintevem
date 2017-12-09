@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+    overflow: scroll;
+    height: 80%;
+    width: 220px;
+    justify-content: center;
+}

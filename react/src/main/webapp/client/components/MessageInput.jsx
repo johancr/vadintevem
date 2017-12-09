@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import style from '../css/colors.css';
 
 export default function MessageInput(props) {
 
@@ -10,7 +11,9 @@ export default function MessageInput(props) {
                         paddingRight: 10,
                         marginBottom: 10,
                         width: 200,
-                        height: 100}}>
+                        height: 100}}
+               className={style.shadow}
+         >
             <textarea style={{ width: '100%',
                                height: '100%',
                                maxWidth: '100%',
