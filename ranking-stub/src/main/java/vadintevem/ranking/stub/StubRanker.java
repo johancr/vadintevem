@@ -27,8 +27,8 @@ public class StubRanker implements Ranker {
     public List<Message> top(int limit) {
         return ranking.entrySet().stream()
                 .sorted(comparing((Map.Entry<Message, Integer>::getValue)).reversed())
-                .map(Map.Entry::getKey)
                 .limit(limit)
+                .map(Map.Entry::getKey)
                 .collect(toList());
     }
 }
