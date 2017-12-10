@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {getNextMessage} from '../actions/message.js';
 import Button from './Button.jsx';
 import {saveHistory} from '../actions/history.js';
+import {increaseRanking} from '../actions/ranking.js';
 
 class MessagePresenter extends Component {
 
@@ -15,6 +16,7 @@ class MessagePresenter extends Component {
 
     nextMessage() {
         this.props.saveHistory(this.props.message);
+        this.props.increaseRanking(this.props.message);
         this.props.getNextMessage();
     }
 
@@ -35,6 +37,7 @@ MessagePresenter.propTypes = {
     message: PropTypes.object,
     getNextMessage: PropTypes.func,
     saveHistory: PropTypes.func,
+    increaseRanking: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -45,6 +48,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
         getNextMessage,
         saveHistory,
+        increaseRanking,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessagePresenter);

@@ -4,7 +4,11 @@ import style from '../css/menu.css';
 import {setView} from '../actions/view.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {READER_VIEW, INTERACTOR_VIEW, HISTORY_VIEW} from '../constants/views.js';
+import {READER_VIEW,
+        INTERACTOR_VIEW,
+        HISTORY_VIEW,
+        EXPLORER_VIEW,
+} from '../constants/views.js';
 
 class Menu extends Component {
 
@@ -14,6 +18,7 @@ class Menu extends Component {
         this.setReaderView = this.setReaderView.bind(this);
         this.setInteractorView = this.setInteractorView.bind(this);
         this.setHistoryView = this.setHistoryView.bind(this);
+        this.setExplorerView = this.setExplorerView.bind(this);
     }
 
     setReaderView() {
@@ -26,6 +31,10 @@ class Menu extends Component {
 
     setHistoryView() {
         this.props.setView(HISTORY_VIEW);
+    }
+
+    setExplorerView() {
+        this.props.setView(EXPLORER_VIEW);
     }
 
     render() {
@@ -44,6 +53,10 @@ class Menu extends Component {
                         <Button label = 'History'
                             onClick={this.setHistoryView}
                             disabled={this.props.view === HISTORY_VIEW}
+                        />
+                        <Button label = 'Top'
+                            onClick={this.setExplorerView}
+                            disabled={this.props.view === EXPLORER_VIEW}
                         />
                 </div>
             </div>

@@ -1,12 +1,10 @@
-package vadintevem.ranking;
+package vadintevem.explorer;
 
 import vadintevem.entities.Message;
 
 import java.util.List;
 
-public interface Ranker {
-
-    void increase(Message message);
+public interface ExplorerInteractor {
 
     List<Message> top(int limit);
 }

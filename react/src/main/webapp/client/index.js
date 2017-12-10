@@ -10,10 +10,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import style from './css/index.css';
 import view from './reducers/view.js';
 import history from './reducers/history.js';
+import ranking from './reducers/ranking.js';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let reducers = combineReducers({message, isLoadingMessage, view, history});
+let reducers = combineReducers({message, isLoadingMessage, view, history, ranking});
 let store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 ReactDOM.render(
     <Provider store={store}>

@@ -1,6 +1,5 @@
 package vadintevem.ranking.stub;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import vadintevem.entities.Message;
 import vadintevem.ranking.Ranker;
@@ -8,8 +7,8 @@ import vadintevem.ranking.Ranker;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StubRankerTest {
 
@@ -18,7 +17,6 @@ public class StubRankerTest {
     private static Message GOOD_MESSAGE = Message.of("good message");
 
     @Test
-    @Ignore
     public void top() {
         Ranker ranker = new StubRanker();
         increaseRank(BAD_MESSAGE, 1, ranker);
@@ -27,7 +25,7 @@ public class StubRankerTest {
 
         List<Message> top = ranker.top(3);
 
-        assertThat(top.get(2), is(GOOD_MESSAGE));
+        assertThat(top.get(0), is(GOOD_MESSAGE));
         assertThat(top.get(1), is(OK_MESSAGE));
         assertThat(top.get(2), is(BAD_MESSAGE));
     }

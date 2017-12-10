@@ -54,6 +54,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>publisher</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>explorer</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

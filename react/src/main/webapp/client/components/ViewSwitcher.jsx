@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import ReaderView from './ReaderView.jsx';
 import InteractorView from './InteractorView.jsx';
-import {READER_VIEW, INTERACTOR_VIEW, HISTORY_VIEW} from '../constants/views.js';
+import {READER_VIEW,
+        INTERACTOR_VIEW,
+        HISTORY_VIEW,
+        EXPLORER_VIEW,
+} from '../constants/views.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import HistoryView from './HistoryView.jsx';
+import ExplorerView from './ExplorerView.jsx';
 
 class ViewSwitcher extends Component {
 
@@ -22,6 +27,8 @@ class ViewSwitcher extends Component {
                 return <InteractorView />
             case HISTORY_VIEW:
                 return <HistoryView />
+            case EXPLORER_VIEW:
+                return <ExplorerView />
         }
     }
 

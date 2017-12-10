@@ -3,11 +3,11 @@ package vadintevem.ranking.stub;
 import vadintevem.entities.Message;
 import vadintevem.ranking.Ranker;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 public class StubRanker implements Ranker {
@@ -24,11 +24,11 @@ public class StubRanker implements Ranker {
     }
 
     @Override
-    public List<Message> top(int n) {
+    public List<Message> top(int limit) {
         return ranking.entrySet().stream()
-                .sorted(Comparator.comparingInt(Map.Entry::getValue))
+                .sorted(comparing((Map.Entry<Message, Integer>::getValue)).reversed())
                 .map(Map.Entry::getKey)
-                .limit(n)
+                .limit(limit)
                 .collect(toList());
     }
 }

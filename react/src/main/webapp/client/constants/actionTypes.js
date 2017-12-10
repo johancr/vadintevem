@@ -9,3 +9,8 @@ export const LOAD_HISTORY = 'LOAD_HISTORY';
 export const HISTORY_LOADED =  'HISTORY_LOADED';
 export const SAVE_HISTORY = 'SAVE_HISTORY';
 export const HISTORY_SAVED = 'HISTORY_SAVED';
+
+export const INCREASE_RANKING = 'INCREASE_RANKING';
+export const RANKING_INCREASED = 'RANKING_INCREASED';
+export const LOAD_TOP = 'LOAD_TOP';
+export const TOP_LOADED = 'TOP_LOADED';

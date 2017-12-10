@@ -55,6 +55,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>ranking-stub</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>explorer-impl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
