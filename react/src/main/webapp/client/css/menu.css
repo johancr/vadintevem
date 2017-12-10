@@ -15,8 +15,10 @@
 
 .menu__buttons {
     margin-top: 5px;
+    margin-left: 12px;
 }
 
 .menu__buttons > * {
     margin-right: 12px;
+    margin-bottom: 12px;
 }
