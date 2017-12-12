@@ -28,7 +28,14 @@ public class RankingResource {
     @Path("/increase")
     public Response increaseRanking(MessageDto message) {
         publisherInteractor.increaseRanking(message.toEntity());
-        return Response.ok().build();
+        return Response.noContent().build();
+    }
+
+    @PUT
+    @Path("/decrease")
+    public Response decreaseRanking(MessageDto message) {
+        publisherInteractor.decreaseRanking(message.toEntity());
+        return Response.noContent().build();
     }
 
     @GET

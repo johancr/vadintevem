@@ -27,4 +27,9 @@ public class DefaultPublisherInteractor implements PublisherInteractor {
     public void increaseRanking(Message message) {
         ranker.increase(message);
     }
+
+    @Override
+    public void decreaseRanking(Message message) {
+        ranker.decrease(message);
+    }
 }

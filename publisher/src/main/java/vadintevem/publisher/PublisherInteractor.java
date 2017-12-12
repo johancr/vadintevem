@@ -7,4 +7,6 @@ public interface PublisherInteractor {
     void publish(Message message);
 
     void increaseRanking(Message message);
+
+    void decreaseRanking(Message message);
 }

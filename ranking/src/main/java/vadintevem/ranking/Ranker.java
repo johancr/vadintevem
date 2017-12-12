@@ -8,5 +8,7 @@ public interface Ranker {
 
     void increase(Message message);
 
+    void decrease(Message message);
+
     List<Message> top(int limit);
 }

@@ -1,12 +1,14 @@
 package vadintevem.ranking.objectify;
 
 import com.googlecode.objectify.Key;
+import vadintevem.base.functional.Effect;
 import vadintevem.entities.Message;
 import vadintevem.messages.objectify.MessageEntity;
 import vadintevem.ranking.Ranker;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 import static java.util.Comparator.comparing;
@@ -16,10 +18,12 @@ public class ObjectifyRanker implements Ranker {
 
     @Override
     public void increase(Message message) {
-        RankEntity rank = getRankEntity();
-        Key<MessageEntity> messageEntity = ofy().load().type(MessageEntity.class).filter("content", message.getContent()).keys().first().now();
-        rank.increase(messageEntity);
-        ofy().save().entity(rank).now();
+        update(message, rank -> rank::increase);
+    }
+
+    @Override
+    public void decrease(Message message) {
+        update(message, rank -> rank::decrease);
     }
 
     @Override
@@ -30,6 +34,13 @@ public class ObjectifyRanker implements Ranker {
                 .map(Map.Entry::getKey)
                 .map(key -> ofy().load().key(key).now())
                 .collect(toList());
+    }
+
+    private void update(Message message, Function<RankEntity, Effect<Key<MessageEntity>>> rankChange) {
+        RankEntity rank = getRankEntity();
+        Key<MessageEntity> messageEntity = ofy().load().type(MessageEntity.class).filter("content", message.getContent()).keys().first().now();
+        rankChange.apply(rank).apply(messageEntity);
+        ofy().save().entity(rank).now();
     }
 
     private RankEntity getRankEntity() {

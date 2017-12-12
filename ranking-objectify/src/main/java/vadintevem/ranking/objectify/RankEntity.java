@@ -1,7 +1,6 @@
 package vadintevem.ranking.objectify;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import vadintevem.messages.objectify.MessageEntity;
@@ -22,7 +21,15 @@ public class RankEntity {
     }
 
     public void increase(Key<MessageEntity> message) {
-        ranking.put(message, ranking.getOrDefault(message, 0) + 1);
+        update(message, 1);
+    }
+
+    private void update(Key<MessageEntity> message, int rankChange) {
+        ranking.put(message, ranking.getOrDefault(message, 0) + rankChange);
+    }
+
+    public void decrease(Key<MessageEntity> message) {
+        update(message, -1);
     }
 
     public Map<Key<MessageEntity>, Integer> getRanking() {

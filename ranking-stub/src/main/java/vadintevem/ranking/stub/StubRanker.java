@@ -20,7 +20,16 @@ public class StubRanker implements Ranker {
 
     @Override
     public void increase(Message message) {
-        ranking.put(message, ranking.getOrDefault(message, 0) + 1);
+        update(message, 1);
+    }
+
+    @Override
+    public void decrease(Message message) {
+        update(message, -1);
+    }
+
+    private void update(Message message, int rankChange) {
+        ranking.put(message, ranking.getOrDefault(message, 0) + rankChange);
     }
 
     @Override

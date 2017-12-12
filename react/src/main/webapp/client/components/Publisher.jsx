@@ -5,6 +5,8 @@ import style from '../css/publisher.css';
 import {publishMessage} from '../actions/message.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {decreaseRanking} from '../actions/ranking.js';
+import {getNextMessage} from '../actions/message.js';
 
 class Publisher extends Component {
 
@@ -17,6 +19,8 @@ class Publisher extends Component {
 
     publish() {
         this.props.publishMessage(this.state.text);
+        this.props.decreaseRanking(this.props.message);
+        this.props.getNextMessage();
         this.setState({text: ''});
     }
 
@@ -35,15 +39,21 @@ class Publisher extends Component {
 }
 
 Publisher.propTypes = {
-    publishMessage: PropTypes.func
+    publishMessage: PropTypes.func,
+    decreaseRanking: PropTypes.func,
+    message: PropTypes.object,
+    getNextMessage: PropTypes.func,
 }
 
 const mapStateToProps = state => {
-    return {};
+    const {message} = state;
+    return {message};
 }
 
 const mapDispatchToProps = {
-        publishMessage
+        publishMessage,
+        decreaseRanking,
+        getNextMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publisher);
