@@ -9,27 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>publisher-impl</artifactId>
+    <artifactId>validation</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>publisher</artifactId>
+            <artifactId>base</artifactId>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>ranking</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>validation</artifactId>
+            <artifactId>entities</artifactId>
         </dependency>
 
         <dependency>

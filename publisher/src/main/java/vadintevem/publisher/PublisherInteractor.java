@@ -1,10 +1,13 @@
 package vadintevem.publisher;
 
+import vadintevem.base.functional.Either;
+import vadintevem.base.functional.List;
 import vadintevem.entities.Message;
+
 
 public interface PublisherInteractor {
 
-    void publish(Message message);
+    Either<List<String>, Void> publish(Message message);
 
     void increaseRanking(Message message);
 

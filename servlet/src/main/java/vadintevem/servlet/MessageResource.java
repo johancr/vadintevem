@@ -35,7 +35,9 @@ public class MessageResource {
 
     @POST
     public Response publish(MessageDto message) {
-        publisherInteractor.publish(message.toEntity());
-        return Response.ok().build();
+        return publisherInteractor.publish(message.toEntity())
+                .fold(errors -> Response.status(400).entity(ErrorDto.from(errors.toArrayList())),
+                        Response::ok)
+                .build();
     }
 }

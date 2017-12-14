@@ -16,6 +16,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>entities</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>base</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
