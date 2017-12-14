@@ -11,10 +11,11 @@ import style from './css/index.css';
 import view from './reducers/view.js';
 import history from './reducers/history.js';
 import ranking from './reducers/ranking.js';
+import notification from './reducers/notification.js';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let reducers = combineReducers({message, isLoadingMessage, view, history, ranking});
+let reducers = combineReducers({message, isLoadingMessage, view, history, ranking, notification});
 let store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 ReactDOM.render(
     <Provider store={store}>

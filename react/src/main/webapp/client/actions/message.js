@@ -2,6 +2,7 @@ import {LOAD_MESSAGE,
         MESSAGE_LOADED,
         PUBLISH_MESSAGE,
         MESSAGE_PUBLISHED,
+        NOTIFICATION,
         } from '../constants/actionTypes.js';
 
 export function getNextMessage() {
@@ -21,6 +22,15 @@ export function publishMessage(message) {
                      body: JSON.stringify({content: message}),
                      headers: { "Content-Type": "application/json" }
                    })
-            .then(() => dispatch({type: MESSAGE_PUBLISHED}))
+            .then((response) => {
+                dispatch({type: MESSAGE_PUBLISHED});
+                if (!response.ok) {
+                    response.json().then(data => dispatch(
+                        {
+                            type: NOTIFICATION,
+                            text: data.errors
+                        }));
+                }
+            });
     };
 }

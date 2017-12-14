@@ -10,6 +10,7 @@ import MessageFeed from './MessageFeed.jsx';
 import Menu from './Menu.jsx';
 import ViewSwitcher from './ViewSwitcher.jsx';
 import style from '../css/app.css';
+import NotificationPresenter from './NotificationPresenter.jsx';
 
 class App extends React.Component {
 
@@ -23,6 +24,9 @@ class App extends React.Component {
         <Menu />
         <div className={style.app__viewSwitcher}>
             <ViewSwitcher />
+        </div>
+        <div className={style.notification}>
+            <NotificationPresenter />
         </div>
      </div>
      );
