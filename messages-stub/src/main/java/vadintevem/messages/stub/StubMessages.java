@@ -4,10 +4,9 @@ import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+
+import static java.util.stream.Collectors.toList;
 
 public class StubMessages implements Messages {
 
@@ -27,5 +26,10 @@ public class StubMessages implements Messages {
     @Override
     public Optional<Message> find() {
         return Optional.of(Message.of(MESSAGES.get(Math.abs(generator.nextInt()) % MESSAGES.size())));
+    }
+
+    @Override
+    public Collection<Message> findAll() {
+        return MESSAGES.stream().map(Message::of).collect(toList());
     }
 }

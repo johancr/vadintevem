@@ -4,10 +4,12 @@ import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Random;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
+import static java.util.stream.Collectors.toList;
 
 public class ObjectifyMessages implements Messages {
 
@@ -25,5 +27,14 @@ public class ObjectifyMessages implements Messages {
                 ? Optional.empty()
                 : Optional.ofNullable(ofy().load().type(MessageEntity.class).list()
                     .get(Math.abs(generator.nextInt()) % size));
+    }
+
+    @Override
+    public Collection<Message> findAll() {
+        return toDomain(ofy().load().type(MessageEntity.class).list());
+    }
+
+    private static Collection<Message> toDomain(Collection<MessageEntity> entities) {
+        return entities.stream().map(MessageEntity::toDomain).collect(toList());
     }
 }

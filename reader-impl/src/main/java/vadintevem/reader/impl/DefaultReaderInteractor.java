@@ -3,6 +3,7 @@ package vadintevem.reader.impl;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.messages.Messages;
+import vadintevem.tracked.messages.TrackedMessages;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -10,18 +11,18 @@ import java.util.Optional;
 
 public class DefaultReaderInteractor implements ReaderInteractor {
 
-    private final Messages messages;
     private final History history;
+    private final TrackedMessages trackedMessages;
 
     @Inject
-    public DefaultReaderInteractor(Messages messages, History history) {
-        this.messages = messages;
+    public DefaultReaderInteractor(History history, TrackedMessages trackedMessages) {
         this.history = history;
+        this.trackedMessages = trackedMessages;
     }
 
     @Override
     public Optional<Message> findMessage() {
-        return messages.find();
+        return trackedMessages.find();
     }
 
     @Override

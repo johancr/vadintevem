@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reader-impl</artifactId>
+    <artifactId>tracked-messages-objectify</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
+            <artifactId>tracked-messages</artifactId>
         </dependency>
 
         <dependency>
@@ -23,18 +23,18 @@
         </dependency>
 
         <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
+            <groupId>com.googlecode.objectify</groupId>
+            <artifactId>objectify</artifactId>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>history</artifactId>
+            <artifactId>messages-objectify</artifactId>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>tracked-messages</artifactId>
+            <artifactId>history-objectify</artifactId>
         </dependency>
     </dependencies>
 

@@ -3,14 +3,22 @@ import {LOAD_MESSAGE,
         PUBLISH_MESSAGE,
         MESSAGE_PUBLISHED,
         NOTIFICATION,
+        MESSAGE_NOT_FOUND,
         } from '../constants/actionTypes.js';
+import {notify} from './notification.js';
 
 export function getNextMessage() {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
         return fetch('/service/message')
-            .then(response => response.json())
-            .then(json => dispatch({type: MESSAGE_LOADED, message: json}));
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
+                }
+                else {
+                    notify('No unread messages found')(dispatch);
+                }
+            });
     };
 }
 

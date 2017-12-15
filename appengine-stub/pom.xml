@@ -60,6 +60,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>explorer-impl</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>tracked-messages-stub</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

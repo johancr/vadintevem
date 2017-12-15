@@ -26,6 +26,10 @@ public class MessageEntity extends Message {
         // for objectify
     }
 
+    public Message toDomain() {
+        return Message.of(content);
+    }
+
     @Override
     public String getContent() {
         return content;

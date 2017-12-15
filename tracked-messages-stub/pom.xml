@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reader-impl</artifactId>
+    <artifactId>tracked-messages-stub</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
+            <artifactId>tracked-messages</artifactId>
         </dependency>
 
         <dependency>
@@ -30,11 +30,6 @@
         <dependency>
             <groupId>vadintevem</groupId>
             <artifactId>history</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>tracked-messages</artifactId>
         </dependency>
     </dependencies>
 
