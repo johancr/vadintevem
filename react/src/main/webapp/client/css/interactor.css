@@ -1,7 +1,2 @@
 .container {
-    display: flex;
-}
-
-.container > * {
-    margin-right: 20px;
 }

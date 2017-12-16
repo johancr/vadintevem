@@ -15,7 +15,7 @@ class MessageFeed extends Component {
     }
 
     componentDidMount() {
-        const intervalId = setInterval(() => this.nextMessage(), 10000);
+        const intervalId = setInterval(() => this.nextMessage(), 5000);
         this.setState({intervalId: intervalId});
     }
 
@@ -30,9 +30,7 @@ class MessageFeed extends Component {
 
     render() {
         return (
-            <div>
-                <Message content={this.props.message.content}/>
-            </div>
+            <Message content={this.props.message.content}/>
         );
     }
 }

@@ -6,6 +6,7 @@ import {getNextMessage} from '../actions/message.js';
 import Button from './Button.jsx';
 import {saveHistory} from '../actions/history.js';
 import {increaseRanking} from '../actions/ranking.js';
+import style from '../css/messagePresenter.css';
 
 class MessagePresenter extends Component {
 
@@ -23,7 +24,7 @@ class MessagePresenter extends Component {
     render() {
 
         return (
-            <div>
+            <div className={style.container}>
                 <Message content={this.props.message.content}/>
                 <Button onClick={this.nextMessage}
                     label = 'Next'

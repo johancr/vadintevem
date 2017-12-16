@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
      <div className={style.app}>
         <Menu />
-        <div className={style.app__viewSwitcher}>
+        <div className={style.viewSwitcher}>
             <ViewSwitcher />
         </div>
         <div className={style.notification}>
