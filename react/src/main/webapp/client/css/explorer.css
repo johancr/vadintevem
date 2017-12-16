@@ -1,7 +1,7 @@
 .container {
     display: flex;
-
     overflow: auto;
     width: 100%;
-    justify-content: center;
+    flex-flow: column;
+    align-items: center;
 }

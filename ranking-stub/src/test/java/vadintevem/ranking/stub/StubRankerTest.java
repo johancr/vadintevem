@@ -18,7 +18,7 @@ public class StubRankerTest {
 
     @Test
     public void top() {
-        Ranker ranker = new StubRanker();
+        Ranker ranker = StubRanker.create();
         increaseRank(BAD_MESSAGE, 1, ranker);
         increaseRank(GOOD_MESSAGE, 5, ranker);
         increaseRank(OK_MESSAGE, 3, ranker);

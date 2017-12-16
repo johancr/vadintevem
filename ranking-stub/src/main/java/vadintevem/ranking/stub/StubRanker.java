@@ -3,6 +3,7 @@ package vadintevem.ranking.stub;
 import vadintevem.entities.Message;
 import vadintevem.ranking.Ranker;
 
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,21 @@ public class StubRanker implements Ranker {
 
     private final Map<Message, Integer> ranking;
 
+    @Inject
     public StubRanker() {
-        this.ranking = new HashMap<>();
+        this(new HashMap<Message, Integer>() {{
+            put(Message.of("Carpe diem"), 3);
+            put(Message.of("Le ciel, c'est les autres"), 2);
+            put(Message.of("I have always found that plans are useless, but planning is indispensable"), 1);
+        }});
+    }
+
+    private StubRanker(Map<Message, Integer> ranking) {
+        this.ranking = ranking;
+    }
+
+    public static StubRanker create() {
+        return new StubRanker(new HashMap<>());
     }
 
     @Override
@@ -28,10 +42,6 @@ public class StubRanker implements Ranker {
         update(message, -1);
     }
 
-    private void update(Message message, int rankChange) {
-        ranking.put(message, ranking.getOrDefault(message, 0) + rankChange);
-    }
-
     @Override
     public List<Message> top(int limit) {
         return ranking.entrySet().stream()
@@ -39,5 +49,9 @@ public class StubRanker implements Ranker {
                 .limit(limit)
                 .map(Map.Entry::getKey)
                 .collect(toList());
+    }
+
+    private void update(Message message, int rankChange) {
+        ranking.put(message, ranking.getOrDefault(message, 0) + rankChange);
     }
 }
