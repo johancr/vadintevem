@@ -6,6 +6,7 @@
     border-style: solid;
     border-color: rgb(0, 188, 212);
     border-width: 0.5em;
+    min-height: 300px;
 }
 
 .menu {
