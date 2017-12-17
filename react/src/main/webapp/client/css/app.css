@@ -1,12 +1,11 @@
 .container {
     display: flex;
     flex-flow: column;
-    max-height: 800px;
-    max-width: 600px;
     border-style: solid;
     border-color: rgb(0, 188, 212);
     border-width: 0.5em;
     min-height: 300px;
+    max-height: 400px;
 }
 
 .menu {
@@ -20,6 +19,7 @@
 
 .notification {
     display: flex;
+    flex: 1;
     justify-content: center;
     min-height: 1.5em;
 }
