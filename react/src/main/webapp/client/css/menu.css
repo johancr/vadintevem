@@ -1,7 +1,8 @@
 .menu {
     display: flex;
     justify-content: space-between;
-    margin-top: 6px;
+    margin: 6px 0px 6px 0px;
+    min-height: 50px;
 }
 
 .menu__header {

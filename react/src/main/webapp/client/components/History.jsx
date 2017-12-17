@@ -3,6 +3,7 @@ import Message from './Message.jsx';
 import {loadHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import style from '../css/history.css';
 
 class History extends Component {
 
@@ -16,7 +17,7 @@ class History extends Component {
 
     render() {
         return (
-            <div>
+            <div className={style.container}>
                 {
                   this.props.history.map((message, index) =>
                     <Message content={message.content} key={index} />

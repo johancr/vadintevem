@@ -11,7 +11,6 @@ class Message extends Component {
         const {content, isLoadingMessage} = this.props;
 
         return (
-             <div>
                 <Paper style={{paddingTop: 10,
                         paddingBottom: 10,
                         paddingLeft: 10,
@@ -28,7 +27,6 @@ class Message extends Component {
                         : <p style={{maxWidth: '100%', wordWrap: 'break-word'}}>{content}</p>
                     }
                 </Paper>
-             </div>
          );
     }
 }
