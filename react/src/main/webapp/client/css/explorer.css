@@ -1,8 +1,2 @@
 .container {
-    display: flex;
-    overflow: auto;
-    width: 100%;
-    flex-flow: column;
-    align-items: center;
-    height: 100%;
 }
