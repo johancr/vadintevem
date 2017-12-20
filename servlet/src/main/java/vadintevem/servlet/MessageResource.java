@@ -4,10 +4,7 @@ import vadintevem.publisher.PublisherInteractor;
 import vadintevem.reader.impl.ReaderInteractor;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -26,7 +23,20 @@ public class MessageResource {
     }
 
     @GET
-    public Response message() {
+    public Response message(@QueryParam("algorithm") String algorithm) {
+        return algorithm != null
+                ? preferredMessage(algorithm)
+                : defaultMessage();
+    }
+
+    private Response preferredMessage(String algorithm) {
+        return readerInteractor.findMessage(algorithm)
+                .map(Response::ok)
+                .orElse(Response.status(Response.Status.NOT_FOUND))
+                .build();
+    }
+
+    private Response defaultMessage() {
         return readerInteractor.findMessage()
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))

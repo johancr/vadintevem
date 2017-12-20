@@ -31,6 +31,7 @@
         <module>tracked-messages</module>
         <module>tracked-messages-stub</module>
         <module>tracked-messages-objectify</module>
+        <module>message-selector</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -208,6 +209,12 @@
             <dependency>
                 <groupId>vadintevem</groupId>
                 <artifactId>tracked-messages-objectify</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>message-selector</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 

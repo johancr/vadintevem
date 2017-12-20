@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>reader-impl</artifactId>
+    <artifactId>message-selector</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
+            <artifactId>entities</artifactId>
         </dependency>
 
         <dependency>
@@ -24,12 +24,7 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>history</artifactId>
+            <artifactId>base</artifactId>
         </dependency>
 
         <dependency>
@@ -39,7 +34,12 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>message-selector</artifactId>
+            <artifactId>ranking</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>messages</artifactId>
         </dependency>
     </dependencies>
 

@@ -22,6 +22,21 @@ export function getNextMessage() {
     };
 }
 
+export function getPreferredMessage(algorithm) {
+    return dispatch => {
+        dispatch({type: LOAD_MESSAGE});
+        return fetch(`/service/message?algorithm=${algorithm}`)
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
+                }
+                else {
+                    notify('No unread messages found')(dispatch);
+                }
+            });
+    };
+}
+
 export function publishMessage(message) {
     return dispatch => {
         dispatch({type: PUBLISH_MESSAGE});

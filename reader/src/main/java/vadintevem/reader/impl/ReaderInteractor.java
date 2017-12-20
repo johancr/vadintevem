@@ -9,6 +9,8 @@ public interface ReaderInteractor {
 
     Optional<Message> findMessage();
 
+    Optional<Message> findMessage(String algorithm);
+
     List<Message> loadHistory();
 
     void saveHistory(Message message);

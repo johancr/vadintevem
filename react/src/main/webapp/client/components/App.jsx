@@ -11,10 +11,13 @@ import Menu from './Menu.jsx';
 import ViewSwitcher from './ViewSwitcher.jsx';
 import style from '../css/app.css';
 import NotificationPresenter from './NotificationPresenter.jsx';
+import {RANDOM} from '../constants/algorithms.js';
+import {setAlgorithm} from '../actions/algorithm.js';
 
 class App extends React.Component {
 
   componentDidMount() {
+    this.props.setAlgorithm(RANDOM);
     this.props.getNextMessage();
   }
 
@@ -34,7 +37,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    getNextMessage: PropTypes.func
+    getNextMessage: PropTypes.func,
+    setAlgorithm: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -42,7 +46,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getNextMessage
+        getNextMessage,
+        setAlgorithm,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

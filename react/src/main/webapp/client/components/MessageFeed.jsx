@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Message from './Message.jsx';
-import {getNextMessage} from '../actions/message.js';
+import {getPreferredMessage} from '../actions/message.js';
 import {saveHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -25,7 +25,7 @@ class MessageFeed extends Component {
 
     nextMessage() {
         this.props.saveHistory(this.props.message);
-        this.props.getNextMessage();
+        this.props.getPreferredMessage(this.props.algorithm);
     }
 
     render() {
@@ -37,17 +37,18 @@ class MessageFeed extends Component {
 
 MessageFeed.propTypes = {
     message: PropTypes.object,
-    getNextMessage: PropTypes.func,
+    getPreferredMessage: PropTypes.func,
     saveHistory: PropTypes.func,
+    algorithm: PropTypes.string,
 }
 
 const mapStateToProps = state => {
-    const {message} = state;
-    return {message};
+    const {message, algorithm} = state;
+    return {message, algorithm};
 }
 
 const mapDispatchToProps = {
-        getNextMessage,
+        getPreferredMessage,
         saveHistory,
 };
 
