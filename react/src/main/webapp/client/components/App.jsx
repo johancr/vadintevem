@@ -18,7 +18,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.setAlgorithm(RANDOM);
-    this.props.getNextMessage();
   }
 
   render() {

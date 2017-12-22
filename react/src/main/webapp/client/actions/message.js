@@ -22,7 +22,7 @@ export function getNextMessage() {
     };
 }
 
-export function getPreferredMessage(algorithm) {
+export function getPreferredMessage(algorithm, nextAction) {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
         return fetch(`/service/message?algorithm=${algorithm}`)
@@ -33,7 +33,8 @@ export function getPreferredMessage(algorithm) {
                 else {
                     notify('No unread messages found')(dispatch);
                 }
-            });
+            })
+            .then(nextAction());
     };
 }
 

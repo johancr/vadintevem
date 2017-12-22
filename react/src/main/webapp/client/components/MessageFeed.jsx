@@ -4,33 +4,57 @@ import {getPreferredMessage} from '../actions/message.js';
 import {saveHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import ProgressBar from './ProgressBar.jsx';
 
 class MessageFeed extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {intervalId: ''};
+        this.state = {
+            progress: 0,
+        };
 
         this.nextMessage = this.nextMessage.bind(this);
+        this.startProgress = this.startProgress.bind(this);
+        this.progress = this.progress.bind(this);
     }
 
     componentDidMount() {
-        const intervalId = setInterval(() => this.nextMessage(), 5000);
-        this.setState({intervalId: intervalId});
+        this.nextMessage();
     }
 
     componentWillUnmount() {
-        clearInterval(this.state.intervalId);
+        clearTimeout(this.timer);
     }
 
     nextMessage() {
         this.props.saveHistory(this.props.message);
-        this.props.getPreferredMessage(this.props.algorithm);
+        this.props.getPreferredMessage(this.props.algorithm,
+            () => this.startProgress());
+    }
+
+    startProgress() {
+        this.setState({progress: 0});
+        this.timer = setTimeout(() => this.progress(), 400);
+    }
+
+    progress() {
+        const {progress} = this.state;
+        if (progress < 100) {
+            this.setState({progress: progress + 4});
+            this.timer = setTimeout(() => this.progress(), 200);
+        }
+        else {
+            this.nextMessage();
+        }
     }
 
     render() {
         return (
-            <Message content={this.props.message.content}/>
+            <div>
+                <Message content={this.props.message.content}/>
+                <ProgressBar progress={this.state.progress} />
+            </div>
         );
     }
 }
