@@ -10,7 +10,7 @@ class Message extends Component {
         return (
             <div>
                 {isLoadingMessage
-                    ? <p>Loading message...</p>
+                    ? <p style={{height:'1em'}}></p>
                     : <p style={{maxWidth: '100%', wordWrap: 'break-word'}}>{content}</p>}
             </div>
          );
