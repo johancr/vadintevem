@@ -20,8 +20,4 @@ module.exports = {
     ]
   },
   plugins: [HtmlWebpackPluginConfig],
-
-  devServer: {
-    port: 9000,
-  }
 }
