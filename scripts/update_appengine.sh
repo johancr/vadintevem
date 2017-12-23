@@ -1,1 +1,1 @@
-mvn -T 1C clean install -pl servlet,react -am -Dui=simple-ui && mvn appengine:update -pl appengine -DappId=vadintevem-simple
+mvn -T 1C clean install -pl appengine -am -Dui=material-ui && mvn appengine:update -pl appengine -DappId=vadintevem

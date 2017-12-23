@@ -1,14 +1,29 @@
 import {NOTIFICATION,
         RESET_NOTIFICATION,
         } from '../constants/actionTypes.js';
+import moment from 'moment';
 
-export default function message(state = '', action) {
+const initialState = {
+    text: '',
+    timestamp: moment().subtract(moment.duration(3, 'seconds')),
+};
+
+export default function message(state = initialState, action) {
     switch(action.type) {
         case NOTIFICATION:
-            return action.text;
+            return {
+                    text: action.text,
+                    timestamp: action.timestamp,
+                   };
         case RESET_NOTIFICATION:
-            return '';
+            return passedLimit(state.timestamp)
+                ? initialState
+                : state
         default:
             return state;
     }
+}
+
+function passedLimit(timestamp) {
+    return timestamp < moment().subtract(moment.duration(3, 'seconds'));
 }

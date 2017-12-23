@@ -1,1 +1,1 @@
-mvn install -pl react -Plocal
+mvn clean install -pl react -Plocal

@@ -10,14 +10,14 @@ class NotificationPresenter extends Component {
         super(props);
     }
 
-    componentDidUpdate() {
-        setTimeout(() => this.props.reset(), 3000);
+    componentDidMount() {
+        setInterval(() => this.props.reset(), 1000);
     }
 
     render() {
         return (
                 <div className={style.container}>
-                    {this.props.notification}
+                    {this.props.notification.text}
                 </div>
             );
     }

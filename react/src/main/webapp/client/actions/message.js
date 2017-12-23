@@ -38,7 +38,7 @@ export function getPreferredMessage(algorithm, nextAction) {
     };
 }
 
-export function publishMessage(message) {
+export function publishMessage(message, nextAction) {
     return dispatch => {
         dispatch({type: PUBLISH_MESSAGE});
         return fetch('/service/message',
@@ -48,12 +48,11 @@ export function publishMessage(message) {
                    })
             .then((response) => {
                 dispatch({type: MESSAGE_PUBLISHED});
-                if (!response.ok) {
-                    response.json().then(data => dispatch(
-                        {
-                            type: NOTIFICATION,
-                            text: data.errors
-                        }));
+                if (response.ok) {
+                    nextAction();
+                }
+                else {
+                    response.json().then(data => notify(data.errors)(dispatch));
                 }
             });
     };

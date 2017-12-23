@@ -18,10 +18,12 @@ class Publisher extends Component {
     }
 
     publish() {
-        this.props.publishMessage(this.state.text);
-        this.props.decreaseRanking(this.props.message);
-        this.props.getNextMessage();
-        this.setState({text: ''});
+        this.props.publishMessage(this.state.text,
+            () => {
+                this.props.decreaseRanking(this.props.message);
+                this.props.getNextMessage();
+                this.setState({text: ''});
+            });
     }
 
     onChange(event) {
