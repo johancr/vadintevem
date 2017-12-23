@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Message from './Message.jsx';
+import Message from 'Components/Message.jsx';
 import {getPreferredMessage} from '../actions/message.js';
 import {saveHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import ProgressBar from './ProgressBar.jsx';
+import ProgressBar from 'Components/ProgressBar.jsx';
 
 class MessageFeed extends Component {
 

@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 import CircularProgress from 'material-ui/CircularProgress';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import style from '../css/colors.css';
+import style from '../../css/colors.css';
 
 class Message extends Component {
 

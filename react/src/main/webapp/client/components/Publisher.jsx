@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import MessageInput from './MessageInput.jsx';
-import Button from './Button.jsx';
+import MessageInput from 'Components/MessageInput.jsx';
+import Button from 'Components/Button.jsx';
 import style from '../css/publisher.css';
 import {publishMessage} from '../actions/message.js';
 import PropTypes from 'prop-types';

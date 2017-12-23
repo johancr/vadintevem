@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Message from './Message.jsx';
+import Message from 'Components/Message.jsx';
 import {loadTop} from '../actions/ranking.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';

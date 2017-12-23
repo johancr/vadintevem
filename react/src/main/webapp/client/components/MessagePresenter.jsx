@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Message from './Message.jsx';
+import Message from 'Components/Message.jsx';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getNextMessage} from '../actions/message.js';
-import Button from './Button.jsx';
+import Button from 'Components/Button.jsx';
 import {saveHistory} from '../actions/history.js';
 import {increaseRanking} from '../actions/ranking.js';
 import style from '../css/messagePresenter.css';

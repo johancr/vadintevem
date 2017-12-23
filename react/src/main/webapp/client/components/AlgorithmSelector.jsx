@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Selector from './Selector.jsx';
-import SelectorItem from './SelectorItem.jsx';
+import Selector from 'Components/Selector.jsx';
+import SelectorItem from 'Components/SelectorItem.jsx';
 import {RANDOM, POPULAR, UNREAD} from '../constants/algorithms.js';
 import {setAlgorithm} from '../actions/algorithm.js';
 import {connect} from 'react-redux';

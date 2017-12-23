@@ -1,6 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import style from '../css/colors.css';
+import style from '../../css/colors.css';
 
 export default function MessageInput(props) {
 
