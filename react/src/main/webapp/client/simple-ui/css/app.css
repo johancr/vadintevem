@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-flow: column;
+    min-height: 300px;
+    max-height: 400px;
+}
+
+.menu {
+}
+
+.viewSwitcher {
+    overflow: scroll;
+}
+
+.notification {
+    min-height: 1.5em;
+}

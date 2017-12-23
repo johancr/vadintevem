@@ -7,7 +7,7 @@ import isLoadingMessage from './reducers/isLoadingMessage.js';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import style from './css/index.css';
+import style from 'Css/index.css';
 import view from './reducers/view.js';
 import history from './reducers/history.js';
 import ranking from './reducers/ranking.js';

@@ -6,7 +6,7 @@ import {getNextMessage} from '../actions/message.js';
 import Button from 'Components/Button.jsx';
 import {saveHistory} from '../actions/history.js';
 import {increaseRanking} from '../actions/ranking.js';
-import style from '../css/messagePresenter.css';
+import style from 'Css/messagePresenter.css';
 
 class MessagePresenter extends Component {
 

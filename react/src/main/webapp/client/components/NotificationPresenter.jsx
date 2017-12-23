@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import style from '../css/notification.css';
+import style from 'Css/notification.css';
 import {reset} from '../actions/notification.js';
 
 class NotificationPresenter extends Component {

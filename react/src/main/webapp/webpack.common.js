@@ -27,6 +27,7 @@ module.exports = (env = {}) => {
         resolve: {
             alias: {
                 Components: path.resolve(__dirname, `client/${ui}/components/`),
+                Css: path.resolve(__dirname, `client/${ui}/css/`),
             }
         }
     };

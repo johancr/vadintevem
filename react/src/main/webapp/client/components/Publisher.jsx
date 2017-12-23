@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MessageInput from 'Components/MessageInput.jsx';
 import Button from 'Components/Button.jsx';
-import style from '../css/publisher.css';
+import style from 'Css/publisher.css';
 import {publishMessage} from '../actions/message.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';

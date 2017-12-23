@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Button from 'Components/Button.jsx';
-import style from '../css/menu.css';
+import style from 'Css/menu.css';
 import {setView} from '../actions/view.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';

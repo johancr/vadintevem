@@ -1,0 +1,12 @@
+.menu {
+    display: flex;
+}
+
+.menu__header {
+}
+
+.menu__buttons {
+}
+
+.menu__buttons > * {
+}
