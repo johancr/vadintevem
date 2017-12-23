@@ -12,6 +12,10 @@
     <artifactId>react</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <ui>material-ui</ui>
+    </properties>
+
     <profiles>
         <profile>
             <id>production</id>
@@ -59,7 +63,7 @@
                                     <goal>yarn</goal>
                                 </goals>
                                 <configuration>
-                                    <arguments>build</arguments>
+                                    <arguments>build --env.ui=${ui}</arguments>
                                 </configuration>
                             </execution>
                         </executions>
@@ -88,7 +92,7 @@
                                     <goal>yarn</goal>
                                 </goals>
                                 <configuration>
-                                    <arguments>start</arguments>
+                                    <arguments>start --env.ui=${ui}</arguments>
                                 </configuration>
                             </execution>
                         </executions>

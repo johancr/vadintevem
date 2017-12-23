@@ -12,6 +12,10 @@
     <artifactId>appengine</artifactId>
     <packaging>war</packaging>
 
+    <properties>
+        <version>1</version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>vadintevem</groupId>
@@ -128,7 +132,7 @@
                 <version>1.9.58</version>
                 <configuration>
                     <appId>vadintevem</appId> <!-- Override appengine-web.xml <project> -->
-                    <version>1</version>
+                    <version>${version}</version>
                     <fullScanSeconds>1</fullScanSeconds>
                     <retainUploadDir>true</retainUploadDir>
                 </configuration>
