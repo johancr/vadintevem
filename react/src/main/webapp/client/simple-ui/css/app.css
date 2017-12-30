@@ -1,11 +1,13 @@
 .container {
     width: 350px;
+    height: 350px;
 }
 
 .menu {
 }
 
 .viewSwitcher {
+    height: 100%;
     overflow: scroll;
 }
 
