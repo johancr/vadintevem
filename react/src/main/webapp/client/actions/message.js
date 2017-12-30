@@ -57,3 +57,7 @@ export function publishMessage(message, nextAction) {
             });
     };
 }
+
+export function setMessage(message) {
+    return dispatch => dispatch({type: MESSAGE_LOADED, message: message});
+}

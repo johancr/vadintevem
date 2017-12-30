@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Message from 'Components/Message.jsx';
+import InteractableMessage from './InteractableMessage.jsx';
 import {loadHistory} from '../actions/history.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -20,7 +20,7 @@ class History extends Component {
             <div className={style.container}>
                 {
                   this.props.history.map((message, index) =>
-                    <Message content={message.content} key={index} />
+                    <InteractableMessage message={message} key={index} />
                   )
                 }
             </div>
