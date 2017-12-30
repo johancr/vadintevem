@@ -1,11 +1,14 @@
 .menu {
     display: flex;
+    justify-content: space-between;
 }
 
 .menu__header {
 }
 
 .menu__buttons {
+    display: flex;
+    justify-content:flex-end;
 }
 
 .menu__buttons > * {
