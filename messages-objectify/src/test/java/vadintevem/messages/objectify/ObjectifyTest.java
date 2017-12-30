@@ -38,12 +38,7 @@ public class ObjectifyTest {
     public void persist() {
         ObjectifyService.register(MessageEntity.class);
 
-        ofy().save().entity(MessageEntity.from(new Message() {
-            @Override
-            public String getContent() {
-                return "some content";
-            }
-        })).now();
+        ofy().save().entity(MessageEntity.from(Message.of("some content"))).now();
 
         MessageEntity loaded = ofy().load().type(MessageEntity.class).id(1L).now();
         assertThat(loaded.getContent(), is("some content"));

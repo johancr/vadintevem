@@ -27,7 +27,7 @@ public class MessageEntity extends Message {
     }
 
     public Message toDomain() {
-        return Message.of(content);
+        return Message.of(content).setId(id);
     }
 
     @Override
@@ -35,6 +35,7 @@ public class MessageEntity extends Message {
         return content;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

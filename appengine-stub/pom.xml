@@ -65,6 +65,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>tracked-messages-stub</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>authors-stub</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

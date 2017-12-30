@@ -1,40 +1,64 @@
 package vadintevem.publisher.impl;
 
+import vadintevem.authors.Authors;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
-import vadintevem.base.functional.Validation;
+import vadintevem.base.functional.Tuple;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 import vadintevem.publisher.PublisherInteractor;
 import vadintevem.ranking.Ranker;
+import vadintevem.validation.AuthorValidator;
 import vadintevem.validation.MessageValidator;
 
 import javax.inject.Inject;
 
-import static vadintevem.base.functional.Either.right;
+import java.util.Collection;
+
+import static java.util.stream.Collectors.toList;
+import static vadintevem.base.functional.Validation.map2;
 
 public class DefaultPublisherInteractor implements PublisherInteractor {
 
     private final Messages messages;
+    private final Authors authors;
     private final Ranker ranker;
-    private final MessageValidator validator;
+    private final MessageValidator messageValidator;
+    private final AuthorValidator authorValidator;
 
     @Inject
     public DefaultPublisherInteractor(Messages messages,
-                                      Ranker ranker,
-                                      MessageValidator validator) {
+                                      Authors authors, Ranker ranker,
+                                      MessageValidator messageValidator,
+                                      AuthorValidator authorValidator) {
         this.messages = messages;
+        this.authors = authors;
         this.ranker = ranker;
-        this.validator = validator;
+        this.messageValidator = messageValidator;
+        this.authorValidator = authorValidator;
     }
 
     @Override
     public Either<List<String>, Void> publish(Message message) {
-        return validator.validate(message).fold(this::onSuccess, Either::left);
+        return messageValidator.validate(message).fold(this::onSuccess, Either::left);
     }
 
     private Either<List<String>, Void> onSuccess(Message message) {
         messages.save(message);
+        return Either.right(null);
+    }
+
+    @Override
+    public Either<List<String>, Void> publish(Message message, Author author) {
+        return map2(messageValidator.validate(message),
+                authorValidator.validate(author), Tuple.create())
+                .fold(valid -> onSuccess(valid._1, valid._2), Either::left);
+    }
+
+    private Either<List<String>, Void> onSuccess(Message message, Author author) {
+        long messageId = messages.save(message);
+        authors.append(author, messageId);
         return Either.right(null);
     }
 
@@ -46,5 +70,14 @@ public class DefaultPublisherInteractor implements PublisherInteractor {
     @Override
     public void decreaseRanking(Message message) {
         ranker.decrease(message);
+    }
+
+    @Override
+    public Either<String, Collection<Message>> findWrittenBy(Author author) {
+        Collection<Message> all = messages.findAll();
+        return authors.findWrittenBy(author)
+                .map(messageIds -> all.stream()
+                        .filter(message -> messageIds.contains(message.getId()))
+                        .collect(toList()));
     }
 }

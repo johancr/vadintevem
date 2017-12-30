@@ -4,6 +4,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.google.inject.Module;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
+import vadintevem.servlet.AuthorResource;
 import vadintevem.servlet.HistoryResource;
 import vadintevem.servlet.MessageResource;
 import vadintevem.servlet.RankingResource;
@@ -23,6 +24,7 @@ public class JerseyServletModuleFactory {
                 bind(MessageResource.class);
                 bind(HistoryResource.class);
                 bind(RankingResource.class);
+                bind(AuthorResource.class);
 
                 serve("/service/*").with(GuiceContainer.class);
             }

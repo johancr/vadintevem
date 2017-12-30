@@ -18,6 +18,11 @@
         </dependency>
 
         <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>messages</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
         </dependency>

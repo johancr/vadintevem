@@ -32,6 +32,8 @@
         <module>tracked-messages-stub</module>
         <module>tracked-messages-objectify</module>
         <module>message-selector</module>
+        <module>authors</module>
+        <module>authors-stub</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -215,6 +217,18 @@
             <dependency>
                 <groupId>vadintevem</groupId>
                 <artifactId>message-selector</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>authors</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>authors-stub</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 

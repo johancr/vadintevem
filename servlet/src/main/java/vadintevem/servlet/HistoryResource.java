@@ -31,7 +31,7 @@ public class HistoryResource {
 
     @POST
     public Response save(MessageDto message) {
-        if (message.getContent() != null)
+        if (message.getId() != null)
         {
             readerInteractor.saveHistory(message.toEntity());
             return Response.ok().build();

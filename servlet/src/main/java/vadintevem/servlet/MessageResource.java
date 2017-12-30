@@ -31,6 +31,7 @@ public class MessageResource {
 
     private Response preferredMessage(String algorithm) {
         return readerInteractor.findMessage(algorithm)
+                .map(MessageDto::from)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
                 .build();
@@ -38,14 +39,15 @@ public class MessageResource {
 
     private Response defaultMessage() {
         return readerInteractor.findMessage()
+                .map(MessageDto::from)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
                 .build();
     }
 
     @POST
-    public Response publish(MessageDto message) {
-        return publisherInteractor.publish(message.toEntity())
+    public Response publish(PublishDto data) {
+        return publisherInteractor.publish(data.getMessage().toEntity(), data.getAuthor().toEntity())
                 .fold(errors -> Response.status(400).entity(ErrorDto.from(errors.toArrayList())),
                         Response::ok)
                 .build();

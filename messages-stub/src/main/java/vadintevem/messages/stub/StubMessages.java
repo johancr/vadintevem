@@ -6,30 +6,42 @@ import vadintevem.messages.Messages;
 import java.time.Instant;
 import java.util.*;
 
-import static java.util.stream.Collectors.toList;
+import static vadintevem.entities.Message.of;
 
 public class StubMessages implements Messages {
 
-    private static final List<String> MESSAGES = new ArrayList<String>() {{
-        add("Carpe diem");
-        add("Le ciel, c'est les autres");
-        add("I have always found that plans are useless, but planning is indispensable");
-    }};
+    private final List<Message> messages;
+    private final Random generator;
+    private Long sequence;
 
-    private final Random generator = new Random(Instant.now().toEpochMilli());
+    public StubMessages() {
+        this.sequence = 0L;
+        this.generator = new Random(Instant.now().toEpochMilli());
+        this.messages = new ArrayList<Message>() {{
+            add(of("Carpe diem").setId(nextId()));
+            add(of("Le ciel, c'est les autres").setId(nextId()));
+            add(of("I have always found that plans are useless, but planning is indispensable").setId(nextId()));
+        }};
+    }
+
+    private long nextId() {
+        return sequence++;
+    }
 
     @Override
-    public void save(Message message) {
-        MESSAGES.add(message.getContent());
+    public long save(Message message) {
+        Message withId = message.setId(nextId());
+        messages.add(withId);
+        return withId.getId();
     }
 
     @Override
     public Optional<Message> find() {
-        return Optional.of(Message.of(MESSAGES.get(Math.abs(generator.nextInt()) % MESSAGES.size())));
+        return Optional.of(messages.get(Math.abs(generator.nextInt()) % messages.size()));
     }
 
     @Override
     public Collection<Message> findAll() {
-        return MESSAGES.stream().map(Message::of).collect(toList());
+        return messages;
     }
 }

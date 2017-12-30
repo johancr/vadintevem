@@ -22,7 +22,7 @@ public class ObjectifyHistory implements History {
     @Override
     public void add(Message message) {
         HistoryEntity history = getHistoryEntity();
-        Key<MessageEntity> messageEntity = ofy().load().type(MessageEntity.class).filter("content", message.getContent()).keys().first().now();
+        Key<MessageEntity> messageEntity = Key.create(MessageEntity.class, message.getId());
         history.add(Ref.create(messageEntity));
         ofy().save().entity(history).now();
     }

@@ -17,6 +17,7 @@ class Message extends Component {
                         paddingRight: 10,
                         marginTop:10,
                         marginRight: 10,
+                        marginBottom: 10,
                         width: 200,
                         height: 100,
                         overflow: 'scroll'}}

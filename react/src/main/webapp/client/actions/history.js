@@ -18,7 +18,7 @@ export function saveHistory(message) {
         dispatch({type: SAVE_HISTORY});
         return fetch('/service/history',
                         { method: 'POST',
-                          body: JSON.stringify({content: message.content}),
+                          body: JSON.stringify({id: message.id}),
                           headers: { "Content-Type": "application/json" }
                         })
                .then(() => dispatch({type: HISTORY_SAVED}));

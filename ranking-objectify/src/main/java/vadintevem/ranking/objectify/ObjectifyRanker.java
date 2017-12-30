@@ -38,7 +38,7 @@ public class ObjectifyRanker implements Ranker {
 
     private void update(Message message, Function<RankEntity, Effect<Key<MessageEntity>>> rankChange) {
         RankEntity rank = getRankEntity();
-        Key<MessageEntity> messageEntity = ofy().load().type(MessageEntity.class).filter("content", message.getContent()).keys().first().now();
+        Key<MessageEntity> messageEntity = Key.create(MessageEntity.class, message.getId());
         rankChange.apply(rank).apply(messageEntity);
         ofy().save().entity(rank).now();
     }

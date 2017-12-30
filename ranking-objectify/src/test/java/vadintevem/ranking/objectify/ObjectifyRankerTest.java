@@ -60,7 +60,7 @@ public class ObjectifyRankerTest {
     }
 
     private void increaseRank(Message message, int rank, Messages messages, Ranker ranker) {
-        messages.save(message);
-        IntStream.range(0, rank).forEach(i -> ranker.increase(message));
+        Long id = messages.save(message);
+        IntStream.range(0, rank).forEach(i -> ranker.increase(message.setId(id)));
     }
 }

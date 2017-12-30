@@ -1,5 +1,6 @@
 package vadintevem.servlet;
 
+import vadintevem.entities.Message;
 import vadintevem.explorer.ExplorerInteractor;
 import vadintevem.publisher.PublisherInteractor;
 
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.function.Consumer;
 
 import static java.util.stream.Collectors.toList;
 
@@ -27,15 +29,25 @@ public class RankingResource {
     @PUT
     @Path("/increase")
     public Response increaseRanking(MessageDto message) {
-        publisherInteractor.increaseRanking(message.toEntity());
+        validate(message).accept(publisherInteractor::increaseRanking);
         return Response.noContent().build();
     }
 
     @PUT
     @Path("/decrease")
     public Response decreaseRanking(MessageDto message) {
-        publisherInteractor.decreaseRanking(message.toEntity());
+        validate(message).accept(publisherInteractor::decreaseRanking);
         return Response.noContent().build();
+    }
+
+    private static Consumer<Consumer<Message>> validate(MessageDto dto) {
+        return consumer -> {
+            Message message = dto.toEntity();
+            if (message.getId() != null)
+            {
+                consumer.accept(message);
+            }
+        };
     }
 
     @GET

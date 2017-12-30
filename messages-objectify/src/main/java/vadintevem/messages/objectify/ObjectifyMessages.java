@@ -1,5 +1,7 @@
 package vadintevem.messages.objectify;
 
+import com.googlecode.objectify.Key;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 
@@ -16,8 +18,9 @@ public class ObjectifyMessages implements Messages {
     private final Random generator = new Random(Instant.now().toEpochMilli());
 
     @Override
-    public void save(Message message) {
-        ofy().save().entity(MessageEntity.from(message)).now();
+    public long save(Message message) {
+        Key<MessageEntity> saved = ofy().save().entity(MessageEntity.from(message)).now();
+        return saved.getId();
     }
 
     @Override

@@ -66,7 +66,7 @@ public class ObjectifyHistoryTest {
     }
 
     private void save(Message message) {
-        messages.save(message);
-        history.add(message);
+        Long id = messages.save(message);
+        history.add(message.setId(id));
     }
 }

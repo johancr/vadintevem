@@ -14,6 +14,8 @@ public abstract class Either<L, R> {
 
     public abstract <T> T fold(Function<L, T> fLeft, Function<R, T> fRight);
 
+    public abstract <T> Either<L, T> map(Function<R, T> f);
+
     private static class Left<L, R> extends Either<L, R> {
 
         private final L value;
@@ -25,6 +27,11 @@ public abstract class Either<L, R> {
         @Override
         public <T> T fold(Function<L, T> fLeft, Function<R, T> fRight) {
             return fLeft.apply(value);
+        }
+
+        @Override
+        public <T> Either<L, T> map(Function<R, T> f) {
+            return Either.left(value);
         }
     }
 
@@ -39,6 +46,11 @@ public abstract class Either<L, R> {
         @Override
         public <T> T fold(Function<L, T> fLeft, Function<R, T> fRight) {
             return fRight.apply(value);
+        }
+
+        @Override
+        public <T> Either<L, T> map(Function<R, T> f) {
+            return Either.right(f.apply(value));
         }
     }
 }

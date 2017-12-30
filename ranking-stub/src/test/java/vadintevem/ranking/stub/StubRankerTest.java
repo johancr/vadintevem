@@ -12,9 +12,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StubRankerTest {
 
-    private static Message BAD_MESSAGE = Message.of("bad message");
-    private static Message OK_MESSAGE = Message.of("ok message");
-    private static Message GOOD_MESSAGE = Message.of("good message");
+    private static Message BAD_MESSAGE = Message.of("bad message").setId(1L);
+    private static Message OK_MESSAGE = Message.of("ok message").setId(2L);
+    private static Message GOOD_MESSAGE = Message.of("good message").setId(3L);
 
     @Test
     public void top() {

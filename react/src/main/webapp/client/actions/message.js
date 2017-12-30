@@ -43,7 +43,7 @@ export function publishMessage(message, nextAction) {
         dispatch({type: PUBLISH_MESSAGE});
         return fetch('/service/message',
                    { method: 'POST',
-                     body: JSON.stringify({content: message}),
+                     body: JSON.stringify({message: {content: message}, author:{id: 'unknown'}}),
                      headers: { "Content-Type": "application/json" }
                    })
             .then((response) => {
