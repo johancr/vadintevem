@@ -1,3 +1,4 @@
+@US.8
 Feature: Reagera på meddelande
     Som en användare som läser ett meddelande
     Vill jag kunna reagera på meddelandet genom att skriva ett nytt meddelande

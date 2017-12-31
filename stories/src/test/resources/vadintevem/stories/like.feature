@@ -1,3 +1,4 @@
+@US.9
 Feature: Gilla ett meddelande
     Som en användare som läser ett meddelande och gillar det
     Vill jag att det ska räknas som att jag gillar meddelandet om jag inte skriver en reaktion
