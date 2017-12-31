@@ -14,7 +14,7 @@ public class RankEntity {
     @Id
     private Long id;
 
-    private Map<Key<MessageEntity>, Integer> ranking;
+    private Map<Key<MessageEntity>, Long> ranking;
 
     public RankEntity() {
         this.ranking = new HashMap<>();
@@ -25,14 +25,14 @@ public class RankEntity {
     }
 
     private void update(Key<MessageEntity> message, int rankChange) {
-        ranking.put(message, ranking.getOrDefault(message, 0) + rankChange);
+        ranking.put(message, ranking.getOrDefault(message, 0L) + rankChange);
     }
 
     public void decrease(Key<MessageEntity> message) {
         update(message, -1);
     }
 
-    public Map<Key<MessageEntity>, Integer> getRanking() {
+    public Map<Key<MessageEntity>, Long> getRanking() {
         return ranking;
     }
 }

@@ -4,6 +4,7 @@ import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.message.selector.MessageSelectorFactory;
+import vadintevem.ranking.Ranker;
 import vadintevem.tracked.messages.TrackedMessages;
 
 import javax.inject.Inject;
@@ -17,14 +18,17 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     private final History history;
     private final TrackedMessages trackedMessages;
     private final MessageSelectorFactory messageSelectorFactory;
+    private final Ranker ranker;
 
     @Inject
     public DefaultReaderInteractor(History history,
                                    TrackedMessages trackedMessages,
-                                   MessageSelectorFactory messageSelectorFactory) {
+                                   MessageSelectorFactory messageSelectorFactory,
+                                   Ranker ranker) {
         this.history = history;
         this.trackedMessages = trackedMessages;
         this.messageSelectorFactory = messageSelectorFactory;
+        this.ranker = ranker;
     }
 
     @Override
@@ -36,6 +40,12 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     public Optional<Message> findMessage(String algorithm) {
         MessageSelector messageSelector = messageSelectorFactory.create(parse(algorithm));
         return messageSelector.select();
+    }
+
+    @Override
+    public Optional<Message> nextMessage(Message previous) {
+        ranker.increase(previous);
+        return trackedMessages.find();
     }
 
     @Override

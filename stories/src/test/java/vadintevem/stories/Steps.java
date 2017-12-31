@@ -4,6 +4,7 @@ import cucumber.api.java8.En;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 import vadintevem.publisher.PublisherInteractor;
+import vadintevem.ranking.Ranker;
 import vadintevem.reader.impl.ReaderInteractor;
 
 import javax.inject.Inject;
@@ -16,18 +17,13 @@ public class Steps implements En {
     private final Message message = Message.of("test message");
     private final Message reaction = Message.of("reaction message");
 
-    @Inject
-    private PublisherInteractor publisherInteractor;
-
-    @Inject
-    private ReaderInteractor readerInteractor;
-
-    @Inject
-    private Messages messages;
-
     private Message fetched;
 
-    public Steps() {
+    @Inject
+    public Steps(PublisherInteractor publisherInteractor,
+                 ReaderInteractor readerInteractor,
+                 Messages messages,
+                 Ranker ranker) {
 
         Given("^a message is published$", () -> {
             publisherInteractor.publish(message);
@@ -41,9 +37,18 @@ public class Steps implements En {
             publisherInteractor.publish(reaction);
         });
 
+        When("^requesting next message$", () -> {
+            readerInteractor.nextMessage(fetched);
+        });
+
         Then("^the reaction is published$", () -> {
             assertThat(messages.findAll().stream()
                     .anyMatch(m -> m.getContent().equals(reaction.getContent())), is(true));
+        });
+
+        Then("^the rank of the message is increased$", () -> {
+            long rank = ranker.findRank(fetched).orElseThrow(IllegalStateException::new);
+            assertThat(rank, is(1L));
         });
     }
 }

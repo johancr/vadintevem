@@ -11,6 +11,8 @@ public interface ReaderInteractor {
 
     Optional<Message> findMessage(String algorithm);
 
+    Optional<Message> nextMessage(Message previous);
+
     List<Message> loadHistory();
 
     void saveHistory(Message message);

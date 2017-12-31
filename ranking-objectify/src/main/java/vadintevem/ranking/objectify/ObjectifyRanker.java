@@ -8,6 +8,7 @@ import vadintevem.ranking.Ranker;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -29,11 +30,16 @@ public class ObjectifyRanker implements Ranker {
     @Override
     public List<Message> top(int limit) {
         return ofy().load().type(RankEntity.class).first().now().getRanking().entrySet().stream()
-                .sorted(comparing((Map.Entry<Key<MessageEntity>, Integer>::getValue)).reversed())
+                .sorted(comparing((Map.Entry<Key<MessageEntity>, Long>::getValue)).reversed())
                 .limit(limit)
                 .map(Map.Entry::getKey)
                 .map(key -> ofy().load().key(key).now())
                 .collect(toList());
+    }
+
+    @Override
+    public Optional<Long> findRank(Message message) {
+        return Optional.ofNullable(getRankEntity().getRanking().get(Key.create(MessageEntity.class, message.getId())));
     }
 
     private void update(Message message, Function<RankEntity, Effect<Key<MessageEntity>>> rankChange) {
