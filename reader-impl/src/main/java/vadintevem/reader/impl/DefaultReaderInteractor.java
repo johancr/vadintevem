@@ -45,6 +45,7 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     @Override
     public Optional<Message> nextMessage(Message previous) {
         ranker.increase(previous);
+        history.add(previous);
         return trackedMessages.find();
     }
 

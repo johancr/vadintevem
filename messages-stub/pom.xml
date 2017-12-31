@@ -21,6 +21,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>base</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>messages-admin</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

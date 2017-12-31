@@ -2,13 +2,14 @@ package vadintevem.messages.stub;
 
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
+import vadintevem.messages.admin.MessagesAdmin;
 
 import java.time.Instant;
 import java.util.*;
 
 import static vadintevem.entities.Message.of;
 
-public class StubMessages implements Messages {
+public class StubMessages implements Messages, MessagesAdmin {
 
     private final List<Message> messages;
     private final Random generator;
@@ -43,5 +44,10 @@ public class StubMessages implements Messages {
     @Override
     public Collection<Message> findAll() {
         return messages;
+    }
+
+    @Override
+    public void deleteAll() {
+        messages.clear();
     }
 }

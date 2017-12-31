@@ -51,6 +51,12 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
+            <artifactId>messages-admin</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
             <artifactId>ranking-stub</artifactId>
             <scope>test</scope>
         </dependency>

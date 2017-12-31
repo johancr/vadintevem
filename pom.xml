@@ -35,6 +35,7 @@
         <module>authors</module>
         <module>authors-stub</module>
         <module>stories</module>
+        <module>messages-admin</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -230,6 +231,12 @@
             <dependency>
                 <groupId>vadintevem</groupId>
                 <artifactId>authors-stub</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>messages-admin</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
