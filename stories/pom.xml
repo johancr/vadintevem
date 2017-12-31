@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>vadintevem</artifactId>
+        <groupId>vadintevem</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>stories</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>publisher-impl</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>reader-impl</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>base</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>authors-stub</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>history-stub</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>messages-stub</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>ranking-stub</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>tracked-messages-stub</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-guice</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -34,6 +34,7 @@
         <module>message-selector</module>
         <module>authors</module>
         <module>authors-stub</module>
+        <module>stories</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -230,6 +231,24 @@
                 <groupId>vadintevem</groupId>
                 <artifactId>authors-stub</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-java8</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-junit</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-guice</artifactId>
+                <version>2.3.1</version>
             </dependency>
 
             <dependency>
