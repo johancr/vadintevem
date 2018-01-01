@@ -63,7 +63,7 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>tracked-messages-stub</artifactId>
+            <artifactId>tracked-messages-impl</artifactId>
             <scope>test</scope>
         </dependency>
 

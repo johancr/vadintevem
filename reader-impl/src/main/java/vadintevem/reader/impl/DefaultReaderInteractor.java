@@ -1,5 +1,7 @@
 package vadintevem.reader.impl;
 
+import vadintevem.base.functional.Either;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.message.selector.MessageSelector;
@@ -40,6 +42,11 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     public Optional<Message> findMessage(String algorithm) {
         MessageSelector messageSelector = messageSelectorFactory.create(parse(algorithm));
         return messageSelector.select();
+    }
+
+    @Override
+    public Optional<Message> findMessage(Author author) {
+        return trackedMessages.filterFind(author);
     }
 
     @Override

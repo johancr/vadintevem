@@ -16,6 +16,8 @@ public abstract class Either<L, R> {
 
     public abstract <T> Either<L, T> map(Function<R, T> f);
 
+    public abstract boolean isLeft();
+
     private static class Left<L, R> extends Either<L, R> {
 
         private final L value;
@@ -32,6 +34,11 @@ public abstract class Either<L, R> {
         @Override
         public <T> Either<L, T> map(Function<R, T> f) {
             return Either.left(value);
+        }
+
+        @Override
+        public boolean isLeft() {
+            return true;
         }
     }
 
@@ -51,6 +58,11 @@ public abstract class Either<L, R> {
         @Override
         public <T> Either<L, T> map(Function<R, T> f) {
             return Either.right(f.apply(value));
+        }
+
+        @Override
+        public boolean isLeft() {
+            return false;
         }
     }
 }

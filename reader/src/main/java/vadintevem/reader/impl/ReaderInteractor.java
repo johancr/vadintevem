@@ -1,5 +1,6 @@
 package vadintevem.reader.impl;
 
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 
 import java.util.List;
@@ -10,6 +11,8 @@ public interface ReaderInteractor {
     Optional<Message> findMessage();
 
     Optional<Message> findMessage(String algorithm);
+
+    Optional<Message> findMessage(Author author);
 
     Optional<Message> nextMessage(Message previous);
 
