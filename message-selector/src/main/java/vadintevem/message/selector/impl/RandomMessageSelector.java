@@ -1,5 +1,6 @@
 package vadintevem.message.selector.impl;
 
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.messages.Messages;
@@ -27,6 +28,11 @@ public class RandomMessageSelector implements MessageSelector {
         return all.size() > 0
                 ? Optional.of(random(all))
                 : Optional.empty();
+    }
+
+    @Override
+    public Optional<Message> selectBasedOn(Author author) {
+        return select();
     }
 
     private Message random(List<Message> popular) {

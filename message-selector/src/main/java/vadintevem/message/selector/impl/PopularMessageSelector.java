@@ -1,5 +1,6 @@
 package vadintevem.message.selector.impl;
 
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.ranking.Ranker;
@@ -26,6 +27,11 @@ public class PopularMessageSelector implements MessageSelector {
         return popular.size() > 0
                 ? Optional.of(random(popular))
                 : Optional.empty();
+    }
+
+    @Override
+    public Optional<Message> selectBasedOn(Author author) {
+        return select();
     }
 
     private Message random(List<Message> popular) {

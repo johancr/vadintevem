@@ -3,6 +3,7 @@ package vadintevem.stories;
 import cucumber.api.java8.En;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 import vadintevem.messages.admin.MessagesAdmin;
@@ -49,6 +50,10 @@ public class Steps implements En {
             fetched = readerInteractor.findMessage();
         });
 
+        Given("^a message is fetched by user (\\w+)$", (String user) -> {
+            fetched = readerInteractor.findMessage(Author.of(user));
+        });
+
         When("^reacting to that message$", () -> {
             publisherInteractor.publish(reaction);
         });
@@ -60,6 +65,11 @@ public class Steps implements En {
         When("^a too long message is published$", () -> {
             int tooLong = 141;
             result = publisherInteractor.publish(Message.of(generate(tooLong)));
+        });
+
+        When("^a message is read by user (\\w+)$", (String user) -> {
+            readerInteractor.findMessage()
+                    .map(previous -> readerInteractor.nextMessage(previous, Author.of(user)));
         });
 
         Then("^the reaction is published$", () -> {
@@ -78,7 +88,11 @@ public class Steps implements En {
         });
 
         Then("^no next message was fetched$", () -> {
-            assertThat(nextFetched.isPresent(), is(false));
+            assertThat("next fetched", nextFetched.isPresent(), is(false));
+        });
+
+        Then("^the message is fetched$", () -> {
+            assertThat("fetched", fetched.isPresent(), is(true));
         });
     }
 

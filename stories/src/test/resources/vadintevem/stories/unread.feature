@@ -9,3 +9,9 @@ Scenario: When a message has been read, it won't be shown again
     And a message is fetched
     When requesting next message
     Then no next message was fetched
+
+Scenario: Message history is individual
+    Given a message is published
+    When a message is read by user A
+    And a message is fetched by user B
+    Then the message is fetched

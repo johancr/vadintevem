@@ -10,11 +10,13 @@ public interface ReaderInteractor {
 
     Optional<Message> findMessage();
 
-    Optional<Message> findMessage(String algorithm);
+    Optional<Message> findMessage(String algorithm, Author author);
 
     Optional<Message> findMessage(Author author);
 
     Optional<Message> nextMessage(Message previous);
+
+    Optional<Message> nextMessage(Message previous, Author author);
 
     List<Message> loadHistory();
 

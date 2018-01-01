@@ -2,6 +2,7 @@ package vadintevem.history.objectify;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.messages.objectify.MessageEntity;
@@ -15,22 +16,41 @@ public class ObjectifyHistory implements History {
 
     @Override
     public List<Message> load() {
-        return ofy().load().type(HistoryEntity.class).first().now().getHistory().stream()
+        return getMessages(Author.of("unknown"));
+    }
+
+    @Override
+    public List<Message> load(Author author) {
+        return getMessages(author);
+    }
+
+    private List<Message> getMessages(Author author) {
+        return ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now().getHistory().stream()
                 .map(Ref::get).collect(toList());
     }
 
     @Override
     public void add(Message message) {
-        HistoryEntity history = getHistoryEntity();
+        HistoryEntity history = getHistoryEntity(Author.of("unknown"));
+        add(message, history);
+    }
+
+    @Override
+    public void add(Message message, Author author) {
+        HistoryEntity history = getHistoryEntity(author);
+        add(message, history);
+    }
+
+    private void add(Message message, HistoryEntity history) {
         Key<MessageEntity> messageEntity = Key.create(MessageEntity.class, message.getId());
         history.add(Ref.create(messageEntity));
         ofy().save().entity(history).now();
     }
 
-    private HistoryEntity getHistoryEntity() {
-        HistoryEntity entity = ofy().load().type(HistoryEntity.class).first().now();
+    private static HistoryEntity getHistoryEntity(Author author) {
+        HistoryEntity entity = ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now();
         return entity != null
                 ? entity
-                : new HistoryEntity();
+                : new HistoryEntity(author.getId());
     }
 }

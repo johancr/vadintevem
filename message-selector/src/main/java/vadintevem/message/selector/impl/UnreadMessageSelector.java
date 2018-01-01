@@ -1,5 +1,6 @@
 package vadintevem.message.selector.impl;
 
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.tracked.messages.TrackedMessages;
@@ -19,5 +20,10 @@ public class UnreadMessageSelector implements MessageSelector {
     @Override
     public Optional<Message> select() {
         return trackedMessages.find();
+    }
+
+    @Override
+    public Optional<Message> selectBasedOn(Author author) {
+        return trackedMessages.filterFind(author);
     }
 }

@@ -1,5 +1,6 @@
 package vadintevem.servlet;
 
+import vadintevem.entities.Author;
 import vadintevem.publisher.PublisherInteractor;
 import vadintevem.reader.impl.ReaderInteractor;
 
@@ -23,14 +24,15 @@ public class MessageResource {
     }
 
     @GET
-    public Response message(@QueryParam("algorithm") String algorithm) {
-        return algorithm != null
-                ? preferredMessage(algorithm)
+    public Response message(@QueryParam("algorithm") String algorithm,
+                            @QueryParam("author") String author) {
+        return algorithm != null && author != null
+                ? preferredMessage(algorithm, author)
                 : defaultMessage();
     }
 
-    private Response preferredMessage(String algorithm) {
-        return readerInteractor.findMessage(algorithm)
+    private Response preferredMessage(String algorithm, String author) {
+        return readerInteractor.findMessage(algorithm, Author.of(author))
                 .map(MessageDto::from)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
