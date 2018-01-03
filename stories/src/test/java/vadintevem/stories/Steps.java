@@ -1,6 +1,8 @@
 package vadintevem.stories;
 
 import cucumber.api.java8.En;
+import vadintevem.stories.spi.ScenarioListener;
+import vadintevem.stories.spi.ScenarioListenerLoader;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
 import vadintevem.entities.Author;
@@ -9,14 +11,18 @@ import vadintevem.messages.Messages;
 import vadintevem.messages.admin.MessagesAdmin;
 import vadintevem.publisher.PublisherInteractor;
 import vadintevem.ranking.Ranker;
-import vadintevem.reader.impl.ReaderInteractor;
+import vadintevem.reader.FindMessageRequest;
+import vadintevem.reader.NextMessageRequest;
+import vadintevem.reader.ReaderInteractor;
 
 import javax.inject.Inject;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static vadintevem.reader.NextMessageRequest.of;
 
 public class Steps implements En {
 
@@ -31,6 +37,8 @@ public class Steps implements En {
 
     private Either<List<String>, Void> result;
 
+    private final Collection<ScenarioListener> scenarioListeners;
+
     @Inject
     public Steps(PublisherInteractor publisherInteractor,
                  ReaderInteractor readerInteractor,
@@ -38,8 +46,15 @@ public class Steps implements En {
                  Ranker ranker,
                  MessagesAdmin messagesAdmin) {
 
+        scenarioListeners = ScenarioListenerLoader.load();
+
         Before(() -> {
+            scenarioListeners.forEach(ScenarioListener::onStart);
             messagesAdmin.deleteAll();
+        });
+
+        After(() -> {
+            scenarioListeners.forEach(ScenarioListener::onEnd);
         });
 
         Given("^a message is published$", () -> {
@@ -59,7 +74,13 @@ public class Steps implements En {
         });
 
         When("^requesting next message$", () -> {
-            nextFetched = fetched.flatMap(readerInteractor::nextMessage);
+            nextFetched = fetched.flatMap(previous ->
+                    readerInteractor.nextMessage(NextMessageRequest.of(previous, "UNREAD", Author.of("unknown"))));
+        });
+
+        When("^another message is fetched$", () -> {
+            nextFetched = fetched.flatMap(previous ->
+                    readerInteractor.findMessage(FindMessageRequest.of(previous, "UNREAD", Author.of("unknown"))));
         });
 
         When("^a too long message is published$", () -> {
@@ -69,7 +90,7 @@ public class Steps implements En {
 
         When("^a message is read by user (\\w+)$", (String user) -> {
             readerInteractor.findMessage()
-                    .map(previous -> readerInteractor.nextMessage(previous, Author.of(user)));
+                    .map(previous -> readerInteractor.nextMessage(of(previous, Author.of(user))));
         });
 
         Then("^the reaction is published$", () -> {
@@ -80,6 +101,11 @@ public class Steps implements En {
         Then("^the rank of the message is increased$", () -> {
             long rank = fetched.flatMap(ranker::findRank).orElseThrow(IllegalStateException::new);
             assertThat(rank, is(1L));
+        });
+
+        Then("^the rank of the message is not increased$", () -> {
+            Optional<Long> rank = fetched.flatMap(ranker::findRank);
+            assertThat(rank.isPresent(), is(false));
         });
 
         Then("^an error message is returned saying that the message is too long$", () -> {

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import Message from 'Components/Message.jsx';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getNextMessage} from '../actions/message.js';
+import {nextMessage, findMessage} from '../actions/message.js';
 import Button from 'Components/Button.jsx';
-import {saveHistory} from '../actions/history.js';
-import {increaseRanking} from '../actions/ranking.js';
 import style from 'Css/messagePresenter.css';
+import _ from 'lodash';
+
 
 class MessagePresenter extends Component {
 
@@ -15,10 +15,14 @@ class MessagePresenter extends Component {
         this.nextMessage = this.nextMessage.bind(this);
     }
 
+    componentDidMount() {
+        if (_.isEmpty(this.props.message)) {
+            this.props.findMessage('UNREAD', {});
+        }
+    }
+
     nextMessage() {
-        this.props.saveHistory(this.props.message);
-        this.props.increaseRanking(this.props.message);
-        this.props.getNextMessage();
+        this.props.nextMessage('UNREAD', this.props.message);
     }
 
     render() {
@@ -36,9 +40,8 @@ class MessagePresenter extends Component {
 
 MessagePresenter.propTypes = {
     message: PropTypes.object,
-    getNextMessage: PropTypes.func,
-    saveHistory: PropTypes.func,
-    increaseRanking: PropTypes.func,
+    nextMessage: PropTypes.func,
+    findMessage: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -47,9 +50,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getNextMessage,
-        saveHistory,
-        increaseRanking,
+        nextMessage,
+        findMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessagePresenter);

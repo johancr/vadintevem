@@ -30,10 +30,10 @@ public class StubMessages implements Messages, MessagesAdmin {
     }
 
     @Override
-    public long save(Message message) {
+    public Message save(Message message) {
         Message withId = message.setId(nextId());
         messages.add(withId);
-        return withId.getId();
+        return withId;
     }
 
     @Override

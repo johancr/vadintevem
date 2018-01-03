@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface Messages {
 
-    long save(Message message);
+    Message save(Message message);
 
     Optional<Message> find();
 

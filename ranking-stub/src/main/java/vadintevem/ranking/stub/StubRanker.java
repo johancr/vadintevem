@@ -19,9 +19,9 @@ public class StubRanker implements Ranker {
     @Inject
     public StubRanker() {
         this(new HashMap<Message, Long>() {{
-            put(Message.of("Carpe diem").setId(1L), 3L);
-            put(Message.of("Le ciel, c'est les autres").setId(2L), 2L);
-            put(Message.of("I have always found that plans are useless, but planning is indispensable").setId(3L), 1L);
+            put(Message.of("Carpe diem").setId(0L), 3L);
+            put(Message.of("Le ciel, c'est les autres").setId(1L), 2L);
+            put(Message.of("I have always found that plans are useless, but planning is indispensable").setId(2L), 1L);
         }});
     }
 

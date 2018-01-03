@@ -6,6 +6,7 @@ import vadintevem.entities.Message;
 import vadintevem.messages.objectify.MessageEntity;
 import vadintevem.ranking.Ranker;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -29,12 +30,19 @@ public class ObjectifyRanker implements Ranker {
 
     @Override
     public List<Message> top(int limit) {
-        return ofy().load().type(RankEntity.class).first().now().getRanking().entrySet().stream()
+        RankEntity entity = ofy().load().type(RankEntity.class).first().now();
+
+        if (entity != null) {
+            return entity.getRanking().entrySet().stream()
                 .sorted(comparing((Map.Entry<Key<MessageEntity>, Long>::getValue)).reversed())
                 .limit(limit)
                 .map(Map.Entry::getKey)
                 .map(key -> ofy().load().key(key).now())
+                .map(MessageEntity::toDomain)
                 .collect(toList());
+        }
+
+        return Collections.emptyList();
     }
 
     @Override

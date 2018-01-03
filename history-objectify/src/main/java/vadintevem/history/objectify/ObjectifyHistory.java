@@ -7,6 +7,7 @@ import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.messages.objectify.MessageEntity;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -25,8 +26,17 @@ public class ObjectifyHistory implements History {
     }
 
     private List<Message> getMessages(Author author) {
-        return ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now().getHistory().stream()
-                .map(Ref::get).collect(toList());
+        HistoryEntity history = ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now();
+
+        if (history != null) {
+            return history.getHistory().stream()
+                    .map(Ref::get)
+                    .map(MessageEntity::toDomain)
+                    .collect(toList());
+        }
+        else {
+            return Collections.emptyList();
+        }
     }
 
     @Override

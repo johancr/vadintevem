@@ -14,9 +14,5 @@ public interface PublisherInteractor {
 
     Either<List<String>, Void> publish(Message message, Author author);
 
-    void increaseRanking(Message message);
-
-    void decreaseRanking(Message message);
-
     Either<String, Collection<Message>> findWrittenBy(Author author);
 }

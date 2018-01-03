@@ -5,8 +5,7 @@ import style from 'Css/publisher.css';
 import {publishMessage} from '../actions/message.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {decreaseRanking} from '../actions/ranking.js';
-import {getNextMessage} from '../actions/message.js';
+import {findMessage} from '../actions/message.js';
 
 class Publisher extends Component {
 
@@ -18,10 +17,10 @@ class Publisher extends Component {
     }
 
     publish() {
+        const previous = this.props.message;
         this.props.publishMessage(this.state.text,
             () => {
-                this.props.decreaseRanking(this.props.message);
-                this.props.getNextMessage();
+                this.props.findMessage('UNREAD', previous);
                 this.setState({text: ''});
             });
     }
@@ -42,9 +41,8 @@ class Publisher extends Component {
 
 Publisher.propTypes = {
     publishMessage: PropTypes.func,
-    decreaseRanking: PropTypes.func,
     message: PropTypes.object,
-    getNextMessage: PropTypes.func,
+    findMessage: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -54,8 +52,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
         publishMessage,
-        decreaseRanking,
-        getNextMessage,
+        findMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publisher);

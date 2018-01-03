@@ -7,38 +7,49 @@ import {LOAD_MESSAGE,
         } from '../constants/actionTypes.js';
 import {notify} from './notification.js';
 
-export function getNextMessage() {
+export function findMessage(algorithm, previous, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
-        return fetch('/service/message')
+        return fetch(`/service/message/find?algorithm=${algorithm}&author=unknown`,
+                    { method: 'POST',
+                      body: JSON.stringify(previous),
+                      headers: { "Content-Type": "application/json" }
+                    })
             .then(response => {
                 if (response.ok) {
                     response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
                 }
                 else {
                     notify('No unread messages found')(dispatch);
-                }
-            });
-    };
-}
-
-export function getPreferredMessage(algorithm, nextAction) {
-    return dispatch => {
-        dispatch({type: LOAD_MESSAGE});
-        return fetch(`/service/message?algorithm=${algorithm}`)
-            .then(response => {
-                if (response.ok) {
-                    response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
-                }
-                else {
-                    notify('No unread messages found')(dispatch);
+                    dispatch({type: MESSAGE_NOT_FOUND});
                 }
             })
             .then(nextAction());
     };
 }
 
-export function publishMessage(message, nextAction) {
+export function nextMessage(algorithm, previous, nextAction = () => {}) {
+    return dispatch => {
+        dispatch({type: LOAD_MESSAGE});
+        return fetch(`/service/message/next?algorithm=${algorithm}&author=unknown`,
+                    { method: 'POST',
+                      body: JSON.stringify(previous),
+                      headers: { "Content-Type": "application/json" }
+                    })
+            .then(response => {
+                if (response.ok) {
+                    response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
+                }
+                else {
+                    notify('No unread messages found')(dispatch);
+                    dispatch({type: MESSAGE_NOT_FOUND});
+                }
+            })
+            .then(nextAction());
+    };
+}
+
+export function publishMessage(message, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: PUBLISH_MESSAGE});
         return fetch('/service/message',

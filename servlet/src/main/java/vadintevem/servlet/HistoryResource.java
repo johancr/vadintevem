@@ -1,10 +1,9 @@
 package vadintevem.servlet;
 
-import vadintevem.reader.impl.ReaderInteractor;
+import vadintevem.reader.ReaderInteractor;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -27,18 +26,5 @@ public class HistoryResource {
     public Response history() {
         return Response.ok(readerInteractor.loadHistory().stream().
                 map(MessageDto::from).collect(toList())).build();
-    }
-
-    @POST
-    public Response save(MessageDto message) {
-        if (message.getId() != null)
-        {
-            readerInteractor.saveHistory(message.toEntity());
-            return Response.ok().build();
-        }
-        else
-        {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
     }
 }

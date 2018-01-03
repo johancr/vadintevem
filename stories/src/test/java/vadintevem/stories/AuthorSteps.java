@@ -5,7 +5,7 @@ import vadintevem.base.functional.Either;
 import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.publisher.PublisherInteractor;
-import vadintevem.reader.impl.ReaderInteractor;
+import vadintevem.reader.ReaderInteractor;
 
 import javax.inject.Inject;
 import java.util.Collection;

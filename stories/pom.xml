@@ -33,37 +33,19 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>authors-stub</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>history-stub</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>messages-stub</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
             <artifactId>messages-admin</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>ranking-stub</artifactId>
+            <artifactId>tracked-messages-impl</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>tracked-messages-impl</artifactId>
+            <artifactId>stories-spi</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -97,5 +79,76 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>stub</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>authors-stub</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>history-stub</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>messages-stub</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>ranking-stub</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>objectify</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>stories-objectify</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>authors-stub</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>history-objectify</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>messages-objectify</artifactId>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>vadintevem</groupId>
+                    <artifactId>ranking-objectify</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 </project>

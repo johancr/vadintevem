@@ -6,7 +6,7 @@ import com.googlecode.objectify.annotation.Index;
 import vadintevem.entities.Message;
 
 @Entity
-public class MessageEntity extends Message {
+public class MessageEntity {
 
     @Id
     private Long id;
@@ -30,12 +30,10 @@ public class MessageEntity extends Message {
         return Message.of(content).setId(id);
     }
 
-    @Override
     public String getContent() {
         return content;
     }
 
-    @Override
     public Long getId() {
         return id;
     }

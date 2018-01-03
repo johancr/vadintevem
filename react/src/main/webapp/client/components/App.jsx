@@ -4,7 +4,6 @@ import fetch from 'isomorphic-fetch';
 import {MESSAGE_LOADED} from '../constants/actionTypes.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getNextMessage} from '../actions/message.js';
 import Publisher from './Publisher.jsx';
 import MessageFeed from './MessageFeed.jsx';
 import Menu from './Menu.jsx';
@@ -36,7 +35,6 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    getNextMessage: PropTypes.func,
     setAlgorithm: PropTypes.func,
 }
 
@@ -45,7 +43,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getNextMessage,
         setAlgorithm,
 };
 

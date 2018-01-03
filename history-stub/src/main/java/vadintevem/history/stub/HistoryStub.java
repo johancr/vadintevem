@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 
 public class HistoryStub implements History {
 
-    private static final Map<Author, List<Long>> MESSAGES = new HashMap<>();
+    private static final Map<Author, Set<Long>> MESSAGES = new HashMap<>();
     private final Messages messages;
 
     @Inject
@@ -39,10 +39,12 @@ public class HistoryStub implements History {
 
     @Override
     public void add(Message message, Author author) {
-        MESSAGES.compute(author, (x, y) -> new ArrayList<>()).add(message.getId());
+        Set<Long> history = MESSAGES.getOrDefault(author, new HashSet<>());
+        history.add(message.getId());
+        MESSAGES.putIfAbsent(author, history);
     }
 
     private static boolean inHistory(Long messageId, Author author) {
-        return MESSAGES.getOrDefault(author, Collections.emptyList()).contains(messageId);
+        return MESSAGES.getOrDefault(author, new HashSet<>()).contains(messageId);
     }
 }

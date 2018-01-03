@@ -2,7 +2,7 @@ package vadintevem.reader.impl.guice;
 
 import com.google.inject.AbstractModule;
 import vadintevem.reader.impl.DefaultReaderInteractor;
-import vadintevem.reader.impl.ReaderInteractor;
+import vadintevem.reader.ReaderInteractor;
 
 public class ReaderModule extends AbstractModule {
     @Override

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Message from 'Components/Message.jsx';
-import {getPreferredMessage} from '../actions/message.js';
-import {saveHistory} from '../actions/history.js';
+import {findMessage} from '../actions/message.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ProgressBar from 'Components/ProgressBar.jsx';
@@ -14,22 +13,22 @@ class MessageFeed extends Component {
             progress: 0,
         };
 
-        this.nextMessage = this.nextMessage.bind(this);
+        this.findMessage = this.findMessage.bind(this);
         this.startProgress = this.startProgress.bind(this);
         this.progress = this.progress.bind(this);
     }
 
     componentDidMount() {
-        this.nextMessage();
+        this.findMessage();
     }
 
     componentWillUnmount() {
         clearTimeout(this.timer);
     }
 
-    nextMessage() {
-        this.props.saveHistory(this.props.message);
-        this.props.getPreferredMessage(this.props.algorithm,
+    findMessage() {
+        this.props.findMessage(this.props.algorithm,
+            this.props.message,
             () => this.startProgress());
     }
 
@@ -45,7 +44,7 @@ class MessageFeed extends Component {
             this.timer = setTimeout(() => this.progress(), 200);
         }
         else {
-            this.nextMessage();
+            this.findMessage();
         }
     }
 
@@ -61,8 +60,7 @@ class MessageFeed extends Component {
 
 MessageFeed.propTypes = {
     message: PropTypes.object,
-    getPreferredMessage: PropTypes.func,
-    saveHistory: PropTypes.func,
+    findMessage: PropTypes.func,
     algorithm: PropTypes.string,
 }
 
@@ -72,8 +70,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-        getPreferredMessage,
-        saveHistory,
+        findMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageFeed);

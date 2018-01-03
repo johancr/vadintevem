@@ -6,6 +6,9 @@ import vadintevem.history.History;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.message.selector.MessageSelectorFactory;
 import vadintevem.ranking.Ranker;
+import vadintevem.reader.FindMessageRequest;
+import vadintevem.reader.NextMessageRequest;
+import vadintevem.reader.ReaderInteractor;
 import vadintevem.tracked.messages.TrackedMessages;
 
 import javax.inject.Inject;
@@ -38,37 +41,38 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     }
 
     @Override
+    public Optional<Message> findMessage(Author author) {
+        return trackedMessages.filterFind(author);
+    }
+
+    @Override
     public Optional<Message> findMessage(String algorithm, Author author) {
         MessageSelector messageSelector = messageSelectorFactory.create(parse(algorithm));
         return messageSelector.selectBasedOn(author);
     }
 
     @Override
-    public Optional<Message> findMessage(Author author) {
-        return trackedMessages.filterFind(author);
+    public Optional<Message> findMessage(FindMessageRequest request) {
+        if (request.getPrevious().getId() != null)
+        {
+            history.add(request.getPrevious(), request.getAuthor());
+        }
+        MessageSelector messageSelector = messageSelectorFactory.create(parse(request.getAlgorithm()));
+        return messageSelector.selectBasedOn(request.getAuthor());
     }
 
     @Override
-    public Optional<Message> nextMessage(Message previous, Author author) {
-        ranker.increase(previous);
-        history.add(previous, author);
-        return trackedMessages.filterFind(author);
-    }
-
-    @Override
-    public Optional<Message> nextMessage(Message previous) {
-        ranker.increase(previous);
-        history.add(previous);
-        return trackedMessages.find();
+    public Optional<Message> nextMessage(NextMessageRequest request) {
+        if (request.getPrevious().getId() != null)
+        {
+            ranker.increase(request.getPrevious());
+            history.add(request.getPrevious(), request.getAuthor());
+        }
+        return trackedMessages.filterFind(request.getAuthor());
     }
 
     @Override
     public List<Message> loadHistory() {
         return history.load();
-    }
-
-    @Override
-    public void saveHistory(Message message) {
-        history.add(message);
     }
 }

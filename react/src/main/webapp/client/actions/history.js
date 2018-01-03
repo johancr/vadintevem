@@ -13,14 +13,3 @@ export function loadHistory() {
     };
 }
 
-export function saveHistory(message) {
-    return dispatch => {
-        dispatch({type: SAVE_HISTORY});
-        return fetch('/service/history',
-                        { method: 'POST',
-                          body: JSON.stringify({id: message.id}),
-                          headers: { "Content-Type": "application/json" }
-                        })
-               .then(() => dispatch({type: HISTORY_SAVED}));
-    }
-}

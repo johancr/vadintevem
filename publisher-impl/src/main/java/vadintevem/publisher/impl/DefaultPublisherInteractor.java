@@ -57,27 +57,14 @@ public class DefaultPublisherInteractor implements PublisherInteractor {
     }
 
     private Either<List<String>, Void> onSuccess(Message message, Author author) {
-        long messageId = messages.save(message);
-        authors.append(author, messageId);
+        Message saved = messages.save(message);
+        ranker.increase(saved);
+        authors.append(author, saved.getId());
         return Either.right(null);
     }
 
     @Override
-    public void increaseRanking(Message message) {
-        ranker.increase(message);
-    }
-
-    @Override
-    public void decreaseRanking(Message message) {
-        ranker.decrease(message);
-    }
-
-    @Override
     public Either<String, Collection<Message>> findWrittenBy(Author author) {
-        Collection<Message> all = messages.findAll();
-        return authors.findWrittenBy(author)
-                .map(messageIds -> all.stream()
-                        .filter(message -> messageIds.contains(message.getId()))
-                        .collect(toList()));
+        return authors.findWrittenBy(author);
     }
 }
