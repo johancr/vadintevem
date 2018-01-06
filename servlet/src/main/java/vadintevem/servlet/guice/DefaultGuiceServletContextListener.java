@@ -3,7 +3,6 @@ package vadintevem.servlet.guice;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
-import vadintevem.base.ContextListener;
 import vadintevem.base.ContextListenerLoader;
 import vadintevem.base.GuiceModuleLoader;
 

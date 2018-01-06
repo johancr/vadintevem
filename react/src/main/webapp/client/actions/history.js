@@ -7,7 +7,7 @@ import {LOAD_HISTORY,
 export function loadHistory() {
     return dispatch => {
         dispatch({type: LOAD_HISTORY});
-        return fetch('/service/history')
+        return fetch('/service/history?author=unknown')
             .then(response => response.json())
             .then(json => dispatch({type: HISTORY_LOADED, history: json}));
     };

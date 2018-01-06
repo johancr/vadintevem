@@ -19,7 +19,7 @@ public class UnreadMessageSelector implements MessageSelector {
 
     @Override
     public Optional<Message> select() {
-        return trackedMessages.find();
+        return Optional.empty();
     }
 
     @Override

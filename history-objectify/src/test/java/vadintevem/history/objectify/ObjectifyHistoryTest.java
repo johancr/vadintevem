@@ -6,6 +6,7 @@ import com.googlecode.objectify.ObjectifyService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.messages.Messages;
@@ -29,6 +30,8 @@ public class ObjectifyHistoryTest {
     private Messages messages;
     private History history;
 
+    private final Author author = Author.of("test");
+
     @Before
     public void setUp() {
         dataStoreHelper.setUp();
@@ -48,25 +51,25 @@ public class ObjectifyHistoryTest {
 
     @Test
     public void load() {
-        save(Message.of("some message"));
+        save(Message.of("some message"), author);
 
-        List<Message> historicMessages = history.load();
+        List<Message> historicMessages = history.load(author);
 
         assertThat(historicMessages.size(), is(1));
     }
 
     @Test
     public void saveMultiple() {
-        save(Message.of("some message"));
-        save(Message.of("another message"));
+        save(Message.of("some message"), author);
+        save(Message.of("another message"), author);
 
-        List<Message> historicMessages = history.load();
+        List<Message> historicMessages = history.load(author);
 
         assertThat(historicMessages.size(), is(2));
     }
 
-    private void save(Message message) {
+    private void save(Message message, Author author) {
         Message saved = messages.save(message);
-        history.add(saved);
+        history.add(saved, author);
     }
 }

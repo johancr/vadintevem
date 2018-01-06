@@ -10,11 +10,7 @@ import {notify} from './notification.js';
 export function findMessage(algorithm, previous, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
-        return fetch(`/service/message/find?algorithm=${algorithm}&author=unknown`,
-                    { method: 'POST',
-                      body: JSON.stringify(previous),
-                      headers: { "Content-Type": "application/json" }
-                    })
+        return fetch(`/service/message/find?algorithm=${algorithm}&author=unknown`)
             .then(response => {
                 if (response.ok) {
                     response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));

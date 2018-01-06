@@ -8,15 +8,12 @@ import vadintevem.reader.NextMessageRequest;
 import vadintevem.reader.ReaderInteractor;
 
 import javax.inject.Inject;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Optional;
 
-import static vadintevem.reader.NextMessageRequest.of;
+import static java.util.Optional.empty;
 
 @Path("/message")
 @Produces(MediaType.APPLICATION_JSON)
@@ -32,27 +29,26 @@ public class MessageResource {
         this.publisherInteractor = publisherInteractor;
     }
 
-    @POST
+    @GET
     @Path("/find")
     public Response find(@QueryParam("algorithm") String algorithm,
-                            @QueryParam("author") String author,
-                            MessageDto previous) {
+                         @QueryParam("author") String author) {
 
-        return findMessage(algorithm, author, previous)
+        return findMessage(algorithm, author)
                 .map(MessageDto::from)
                 .map(Response::ok)
                 .orElse(Response.status(Response.Status.NOT_FOUND))
                 .build();
     }
 
-    private Optional<Message> findMessage(String algorithm, String author, MessageDto previous) {
+    private Optional<Message> findMessage(String algorithm, String author) {
         return algorithm != null && author != null
-                ? findMessage(algorithm, Author.of(author), previous.toEntity())
+                ? findMessage(algorithm, Author.of(author))
                 : defaultMessage();
     }
 
-    private Optional<Message> findMessage(String algorithm, Author author, Message previous) {
-        return readerInteractor.findMessage(FindMessageRequest.of(previous, algorithm, author));
+    private Optional<Message> findMessage(String algorithm, Author author) {
+        return readerInteractor.findMessage(FindMessageRequest.of(algorithm, author));
     }
 
     @POST
@@ -71,7 +67,7 @@ public class MessageResource {
     private Optional<Message> nextMessage(String algorithm, String author, MessageDto previous) {
         return algorithm != null && author != null
                 ? nextMessage(algorithm, Author.of(author), previous.toEntity())
-                : defaultMessage();
+                : empty();
     }
 
     private Optional<Message> nextMessage(String algorithm, Author author, Message previous) {
@@ -79,7 +75,7 @@ public class MessageResource {
     }
 
     private Optional<Message> defaultMessage() {
-        return readerInteractor.findMessage();
+        return readerInteractor.findRandomMessage();
     }
 
     @POST

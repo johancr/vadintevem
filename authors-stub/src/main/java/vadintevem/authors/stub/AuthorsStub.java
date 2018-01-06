@@ -1,6 +1,7 @@
 package vadintevem.authors.stub;
 
 import vadintevem.authors.Authors;
+import vadintevem.authors.admin.AuthorsAdmin;
 import vadintevem.base.functional.Either;
 import vadintevem.entities.Author;
 import vadintevem.entities.Message;
@@ -11,7 +12,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
-public class AuthorsStub implements Authors {
+public class AuthorsStub implements Authors, AuthorsAdmin {
 
     private static final Map<String, List<Long>> AUTHORS_MESSAGES = new HashMap<>();
 
@@ -37,5 +38,10 @@ public class AuthorsStub implements Authors {
     private Collection<Message> toMessages(Collection<Long> messageIds) {
         return messages.findAll().stream()
                 .filter(message -> messageIds.contains(message.getId())).collect(toList());
+    }
+
+    @Override
+    public void deleteAll() {
+        AUTHORS_MESSAGES.clear();
     }
 }

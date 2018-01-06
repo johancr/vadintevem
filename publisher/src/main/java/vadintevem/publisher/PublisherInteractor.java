@@ -10,9 +10,9 @@ import java.util.Collection;
 
 public interface PublisherInteractor {
 
-    Either<List<String>, Void> publish(Message message);
-
     Either<List<String>, Void> publish(Message message, Author author);
+
+    Either<List<String>, Void> publish(PublishMessageRequest request);
 
     Either<String, Collection<Message>> findWrittenBy(Author author);
 }

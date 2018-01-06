@@ -1,7 +1,6 @@
 package vadintevem.messages.objectify;
 
 import com.googlecode.objectify.Key;
-import vadintevem.entities.Author;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 import vadintevem.messages.admin.MessagesAdmin;

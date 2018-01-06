@@ -1,8 +1,8 @@
 package vadintevem.publisher.impl.guice;
 
 import com.google.inject.AbstractModule;
-import vadintevem.publisher.impl.DefaultPublisherInteractor;
 import vadintevem.publisher.PublisherInteractor;
+import vadintevem.publisher.impl.DefaultPublisherInteractor;
 
 public class PublisherModule extends AbstractModule {
 

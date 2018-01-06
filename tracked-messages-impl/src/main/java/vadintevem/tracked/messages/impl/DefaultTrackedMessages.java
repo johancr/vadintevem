@@ -10,7 +10,8 @@ import vadintevem.tracked.messages.TrackedMessages;
 import javax.inject.Inject;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.function.Predicate;
+
+import static vadintevem.base.functional.Predicates.notIn;
 
 public class DefaultTrackedMessages implements TrackedMessages {
 
@@ -26,26 +27,17 @@ public class DefaultTrackedMessages implements TrackedMessages {
     }
 
     @Override
-    public Optional<Message> find() {
-        return findFirstUnread(messages.findAll(), history.load());
-    }
-
-    @Override
     public Optional<Message> filterFind(Author author) {
         return authors.findWrittenBy(author)
-                .fold(error -> find(),
-                        authored -> findFirstUnread(messages.findAll(), history.load(), authored));
+                .fold(notFound -> findUnread(messages.findAll(), history.load(author)),
+                        authored -> findUnread(messages.findAll(), history.load(author), authored));
     }
 
-    private static Optional<Message> findFirstUnread(Collection<Message> messages, Collection<Message> history, Collection<Message> authored) {
-        return messages.stream().filter(notIn(history).and(notIn(authored))).findFirst();
-    }
-
-    private static Optional<Message> findFirstUnread(Collection<Message> messages, Collection<Message> history) {
+    private static Optional<Message> findUnread(Collection<Message> messages, Collection<Message> history) {
         return messages.stream().filter(notIn(history)).findFirst();
     }
 
-    private static Predicate<Message> notIn(Collection<Message> messages) {
-        return message -> !messages.contains(message);
+    private static Optional<Message> findUnread(Collection<Message> messages, Collection<Message> history, Collection<Message> authored) {
+        return messages.stream().filter(notIn(history).and(notIn(authored))).findFirst();
     }
 }

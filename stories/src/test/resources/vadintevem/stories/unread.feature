@@ -6,9 +6,9 @@ Feature: Visa bara olästa meddelanden
 
 Scenario: When a message has been read, it won't be shown again
     Given a message is published
-    And a message is fetched
-    When requesting next message
-    Then no next message was fetched
+    And a message is read by user A
+    When a message is fetched by user A
+    Then no message is fetched
 
 Scenario: Message history is individual
     Given a message is published

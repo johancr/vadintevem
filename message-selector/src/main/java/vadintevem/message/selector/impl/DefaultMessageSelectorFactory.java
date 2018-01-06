@@ -6,9 +6,7 @@ import vadintevem.message.selector.MessageSelectorFactory;
 
 import javax.inject.Inject;
 
-import static vadintevem.message.selector.Algorithm.POPULAR;
-import static vadintevem.message.selector.Algorithm.RANDOM;
-import static vadintevem.message.selector.Algorithm.UNREAD;
+import static vadintevem.message.selector.Algorithm.*;
 
 public class DefaultMessageSelectorFactory implements MessageSelectorFactory {
 

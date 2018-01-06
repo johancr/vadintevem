@@ -21,20 +21,10 @@ public class HistoryStub implements History {
     }
 
     @Override
-    public List<Message> load() {
-        return load(Author.of("unknown"));
-    }
-
-    @Override
     public List<Message> load(Author author) {
         return messages.findAll().stream()
                 .filter(message -> inHistory(message.getId(), author))
                 .collect(toList());
-    }
-
-    @Override
-    public void add(Message message) {
-        add(message, Author.of("unknown"));
     }
 
     @Override

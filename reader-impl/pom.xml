@@ -41,6 +41,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>message-selector</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>authors</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

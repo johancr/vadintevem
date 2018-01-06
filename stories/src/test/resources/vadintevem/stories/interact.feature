@@ -7,7 +7,7 @@ Feature: Reagera på meddelande
 
 Scenario: The user reacts to a message
     Given a message is published
-    And a message is fetched
-    When reacting to that message
+    And a message is fetched by user A
+    When user A reacts to that message
     Then the reaction is published
 

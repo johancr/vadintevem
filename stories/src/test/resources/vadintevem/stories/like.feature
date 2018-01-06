@@ -8,7 +8,7 @@ Feature: Gilla ett meddelande
 Scenario: The user likes a message
     Given a message is published
     And a message is fetched
-    When requesting next message
+    When another message is fetched
     Then the rank of the message is increased
 
 

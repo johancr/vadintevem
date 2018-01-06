@@ -1,16 +1,11 @@
 package vadintevem.reader;
 
 import vadintevem.entities.Author;
-import vadintevem.entities.Message;
 
 public abstract class FindMessageRequest {
 
-    public static FindMessageRequest of(Message previous, String algorithm, Author author) {
+    public static FindMessageRequest of(String algorithm, Author author) {
         return new FindMessageRequest() {
-            @Override
-            public Message getPrevious() {
-                return previous;
-            }
 
             @Override
             public String getAlgorithm() {
@@ -24,11 +19,10 @@ public abstract class FindMessageRequest {
         };
     }
 
-    public static FindMessageRequest of(Message previous, Author author) {
-        return of(previous, "UNKNOWN", author);
+    public static FindMessageRequest of(Author author) {
+        return of("UNKNOWN", author);
     }
 
-    public abstract Message getPrevious();
     public abstract String getAlgorithm();
     public abstract Author getAuthor();
 }

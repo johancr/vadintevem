@@ -16,11 +16,6 @@ import static java.util.stream.Collectors.toList;
 public class ObjectifyHistory implements History {
 
     @Override
-    public List<Message> load() {
-        return getMessages(Author.of("unknown"));
-    }
-
-    @Override
     public List<Message> load(Author author) {
         return getMessages(author);
     }
@@ -37,12 +32,6 @@ public class ObjectifyHistory implements History {
         else {
             return Collections.emptyList();
         }
-    }
-
-    @Override
-    public void add(Message message) {
-        HistoryEntity history = getHistoryEntity(Author.of("unknown"));
-        add(message, history);
     }
 
     @Override
