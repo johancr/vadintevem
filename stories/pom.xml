@@ -126,7 +126,7 @@
 
                 <dependency>
                     <groupId>vadintevem</groupId>
-                    <artifactId>authors-stub</artifactId>
+                    <artifactId>authors-objectify</artifactId>
                     <scope>test</scope>
                 </dependency>
 
