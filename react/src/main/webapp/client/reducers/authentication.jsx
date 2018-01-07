@@ -3,7 +3,7 @@ import {LOG_OUT} from '../constants/actionTypes.js';
 
 const initialState = {
     authenticated: false,
-    username: '',
+    username: 'unknown',
 };
 
 export default function algorithm(state = initialState, action) {

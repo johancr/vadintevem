@@ -16,13 +16,15 @@ class MessagePresenter extends Component {
     }
 
     componentDidMount() {
+        const {username} = this.props.authentication;
         if (_.isEmpty(this.props.message)) {
-            this.props.findMessage('UNREAD', {});
+            this.props.findMessage('UNREAD', username);
         }
     }
 
     nextMessage() {
-        this.props.nextMessage('UNREAD', this.props.message);
+        const {username} = this.props.authentication;
+        this.props.nextMessage('UNREAD', username, this.props.message);
     }
 
     render() {
@@ -42,11 +44,12 @@ MessagePresenter.propTypes = {
     message: PropTypes.object,
     nextMessage: PropTypes.func,
     findMessage: PropTypes.func,
+    authentication: PropTypes.object,
 }
 
 const mapStateToProps = state => {
-    const {message} = state;
-    return {message};
+    const {message, authentication} = state;
+    return {message, authentication};
 }
 
 const mapDispatchToProps = {

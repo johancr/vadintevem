@@ -42,26 +42,29 @@ class Menu extends Component {
         return (
             <div className={style.menu} >
                 <span className={style.menu__header}>VIV</span>
-                <div className={style.menu__buttons}>
-                        <div className={style.authenticator}>
-                            <Authenticator />
-                        </div>
-                        <Button label = 'Read'
-                            onClick={this.setReaderView}
-                            disabled={this.props.view === READER_VIEW}
-                        />
-                        <Button label = 'Interact'
-                            onClick={this.setInteractorView}
-                            disabled={this.props.view === INTERACTOR_VIEW}
-                        />
-                        <Button label = 'History'
-                            onClick={this.setHistoryView}
-                            disabled={this.props.view === HISTORY_VIEW}
-                        />
-                        <Button label = 'Top'
-                            onClick={this.setExplorerView}
-                            disabled={this.props.view === EXPLORER_VIEW}
-                        />
+
+                <div>
+                    <div className={style.authenticator}>
+                        <Authenticator />
+                    </div>
+                    <div className={style.menu__buttons}>
+                            <Button label = 'Read'
+                                onClick={this.setReaderView}
+                                disabled={this.props.view === READER_VIEW}
+                            />
+                            <Button label = 'Interact'
+                                onClick={this.setInteractorView}
+                                disabled={this.props.view === INTERACTOR_VIEW}
+                            />
+                            <Button label = 'History'
+                                onClick={this.setHistoryView}
+                                disabled={this.props.view === HISTORY_VIEW}
+                            />
+                            <Button label = 'Top'
+                                onClick={this.setExplorerView}
+                                disabled={this.props.view === EXPLORER_VIEW}
+                            />
+                    </div>
                 </div>
             </div>
         );

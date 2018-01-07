@@ -28,6 +28,6 @@
 
 .authenticator {
    display: flex;
-   flex-basis: 100%;
    justify-content: flex-end;
+   margin-right: 12px;
 }

@@ -93,7 +93,7 @@ public class DefaultReaderInteractor implements ReaderInteractor {
         List<Message> messages = history.load(author);
         return authors.findWrittenBy(author)
                 .map(filterAuthored(messages))
-                .fold(notFound -> Collections.emptyList(), identity());
+                .fold(notFound -> messages, identity());
     }
 
     private Function<Collection<Message>, List<Message>> filterAuthored(List<Message> messages) {

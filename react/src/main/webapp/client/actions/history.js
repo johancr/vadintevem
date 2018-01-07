@@ -4,10 +4,10 @@ import {LOAD_HISTORY,
         HISTORY_SAVED,
         } from '../constants/actionTypes.js';
 
-export function loadHistory() {
+export function loadHistory(author) {
     return dispatch => {
         dispatch({type: LOAD_HISTORY});
-        return fetch('/service/history?author=unknown')
+        return fetch(`/service/history?author=${author}`)
             .then(response => response.json())
             .then(json => dispatch({type: HISTORY_LOADED, history: json}));
     };

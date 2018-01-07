@@ -27,8 +27,9 @@ class MessageFeed extends Component {
     }
 
     findMessage() {
+        const {username} = this.props.authentication;
         this.props.findMessage(this.props.algorithm,
-            this.props.message,
+            username,
             () => this.startProgress());
     }
 
@@ -62,11 +63,12 @@ MessageFeed.propTypes = {
     message: PropTypes.object,
     findMessage: PropTypes.func,
     algorithm: PropTypes.string,
+    authentication: PropTypes.object,
 }
 
 const mapStateToProps = state => {
-    const {message, algorithm} = state;
-    return {message, algorithm};
+    const {message, algorithm, authentication} = state;
+    return {message, algorithm, authentication};
 }
 
 const mapDispatchToProps = {

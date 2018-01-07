@@ -12,7 +12,8 @@ class History extends Component {
     }
 
     componentDidMount() {
-        this.props.loadHistory();
+        const {username} = this.props.authentication;
+        this.props.loadHistory(username);
     }
 
     render() {
@@ -29,12 +30,13 @@ class History extends Component {
 }
 
 History.propTypes = {
-    history: PropTypes.array
+    history: PropTypes.array,
+    authentication: PropTypes.object,
 }
 
 const mapStateToProps = state => {
-    const {history} = state;
-    return {history};
+    const {history, authentication} = state;
+    return {history, authentication};
 }
 
 const mapDispatchToProps = {

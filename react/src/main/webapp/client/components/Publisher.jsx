@@ -18,9 +18,10 @@ class Publisher extends Component {
 
     publish() {
         const previous = this.props.message;
-        this.props.publishMessage(this.state.text,
+        const {username} = this.props.authentication;
+        this.props.publishMessage(this.state.text, username,
             () => {
-                this.props.findMessage('UNREAD', previous);
+                this.props.findMessage('UNREAD', username);
                 this.setState({text: ''});
             });
     }
@@ -43,11 +44,12 @@ Publisher.propTypes = {
     publishMessage: PropTypes.func,
     message: PropTypes.object,
     findMessage: PropTypes.func,
+    authentication: PropTypes.object,
 }
 
 const mapStateToProps = state => {
-    const {message} = state;
-    return {message};
+    const {message, authentication} = state;
+    return {message, authentication};
 }
 
 const mapDispatchToProps = {
