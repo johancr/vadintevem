@@ -9,6 +9,7 @@ import {READER_VIEW,
         HISTORY_VIEW,
         EXPLORER_VIEW,
 } from '../constants/views.js';
+import Authenticator from './Authenticator.jsx';
 
 class Menu extends Component {
 
@@ -42,6 +43,9 @@ class Menu extends Component {
             <div className={style.menu} >
                 <span className={style.menu__header}>VIV</span>
                 <div className={style.menu__buttons}>
+                        <div className={style.authenticator}>
+                            <Authenticator />
+                        </div>
                         <Button label = 'Read'
                             onClick={this.setReaderView}
                             disabled={this.props.view === READER_VIEW}

@@ -18,3 +18,6 @@ export const NOTIFICATION = 'NOTIFICATION';
 export const RESET_NOTIFICATION = 'RESET_NOTIFICATION';
 
 export const SET_ALGORITHM = 'SET_ALGORITHM';
+
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';

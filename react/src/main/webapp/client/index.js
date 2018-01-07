@@ -14,6 +14,7 @@ import ranking from './reducers/ranking.js';
 import notification from './reducers/notification.js';
 import algorithm from './reducers/algorithm.js';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import authentication from './reducers/authentication.jsx';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -26,6 +27,7 @@ let reducers = combineReducers({
     ranking,
     notification,
     algorithm,
+    authentication,
 });
 let store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 

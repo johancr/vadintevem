@@ -8,8 +8,15 @@
 
 .menu__buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content:flex-end;
 }
 
 .menu__buttons > * {
+}
+
+.authenticator {
+   display: flex;
+   flex-basis: 100%;
+   justify-content: flex-end;
 }

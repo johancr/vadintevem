@@ -25,3 +25,9 @@
     margin-right: 12px;
     margin-bottom: 12px;
 }
+
+.authenticator {
+   display: flex;
+   flex-basis: 100%;
+   justify-content: flex-end;
+}
