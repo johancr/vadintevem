@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PublishDto {
 
     private final MessageDto message;
-    private final AuthorDto author;
+    private final UserDto user;
 
     public PublishDto(@JsonProperty("message") MessageDto message,
-                      @JsonProperty("author") AuthorDto author) {
+                      @JsonProperty("user") UserDto user) {
         this.message = message;
-        this.author = author;
+        this.user = user;
     }
 
     public MessageDto getMessage() {
         return message;
     }
 
-    public AuthorDto getAuthor() {
-        return author;
+    public UserDto getUser() {
+        return user;
     }
 }

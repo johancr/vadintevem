@@ -2,8 +2,8 @@ package vadintevem.history.objectify;
 
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
-import vadintevem.entities.Author;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
 import vadintevem.history.History;
 import vadintevem.messages.objectify.MessageEntity;
 
@@ -16,12 +16,12 @@ import static java.util.stream.Collectors.toList;
 public class ObjectifyHistory implements History {
 
     @Override
-    public List<Message> load(Author author) {
-        return getMessages(author);
+    public List<Message> load(User user) {
+        return getMessages(user);
     }
 
-    private List<Message> getMessages(Author author) {
-        HistoryEntity history = ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now();
+    private List<Message> getMessages(User user) {
+        HistoryEntity history = ofy().load().type(HistoryEntity.class).filter("username", user.getUsername()).first().now();
 
         if (history != null) {
             return history.getHistory().stream()
@@ -35,8 +35,8 @@ public class ObjectifyHistory implements History {
     }
 
     @Override
-    public void add(Message message, Author author) {
-        HistoryEntity history = getHistoryEntity(author);
+    public void update(Message message, User user) {
+        HistoryEntity history = getHistoryEntity(user);
         add(message, history);
     }
 
@@ -46,10 +46,10 @@ public class ObjectifyHistory implements History {
         ofy().save().entity(history).now();
     }
 
-    private static HistoryEntity getHistoryEntity(Author author) {
-        HistoryEntity entity = ofy().load().type(HistoryEntity.class).filter("author", author.getId()).first().now();
+    private static HistoryEntity getHistoryEntity(User user) {
+        HistoryEntity entity = ofy().load().type(HistoryEntity.class).filter("username", user.getUsername()).first().now();
         return entity != null
                 ? entity
-                : new HistoryEntity(author.getId());
+                : new HistoryEntity(user.getUsername());
     }
 }

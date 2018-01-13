@@ -1,6 +1,6 @@
 package vadintevem.stories;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 
 public class Data {
@@ -9,5 +9,5 @@ public class Data {
 
     public static final Message REACTION = Message.of("reaction message");
 
-    public static final Author UNKNOWN_AUTHOR = Author.of("unknown");
+    public static final User UNKNOWN_USER = User.of("unknown");
 }

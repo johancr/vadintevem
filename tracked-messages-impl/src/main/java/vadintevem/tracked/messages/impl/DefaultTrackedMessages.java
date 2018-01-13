@@ -1,7 +1,7 @@
 package vadintevem.tracked.messages.impl;
 
 import vadintevem.authors.Authors;
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.messages.Messages;
@@ -27,10 +27,10 @@ public class DefaultTrackedMessages implements TrackedMessages {
     }
 
     @Override
-    public Optional<Message> filterFind(Author author) {
-        return authors.findWrittenBy(author)
-                .fold(notFound -> findUnread(messages.findAll(), history.load(author)),
-                        authored -> findUnread(messages.findAll(), history.load(author), authored));
+    public Optional<Message> filterFind(User user) {
+        return authors.findWrittenBy(user)
+                .fold(notFound -> findUnread(messages.findAll(), history.load(user)),
+                        authored -> findUnread(messages.findAll(), history.load(user), authored));
     }
 
     private static Optional<Message> findUnread(Collection<Message> messages, Collection<Message> history) {

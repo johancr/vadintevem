@@ -1,10 +1,10 @@
 package vadintevem.reader;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 
 public abstract class FindMessageRequest {
 
-    public static FindMessageRequest of(String algorithm, Author author) {
+    public static FindMessageRequest of(String algorithm, User user) {
         return new FindMessageRequest() {
 
             @Override
@@ -13,16 +13,16 @@ public abstract class FindMessageRequest {
             }
 
             @Override
-            public Author getAuthor() {
-                return author;
+            public User getUser() {
+                return user;
             }
         };
     }
 
-    public static FindMessageRequest of(Author author) {
-        return of("UNKNOWN", author);
+    public static FindMessageRequest of(User user) {
+        return of("UNKNOWN", user);
     }
 
     public abstract String getAlgorithm();
-    public abstract Author getAuthor();
+    public abstract User getUser();
 }

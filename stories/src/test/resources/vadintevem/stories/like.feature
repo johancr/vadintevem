@@ -7,13 +7,13 @@ Feature: Gilla ett meddelande
 
 Scenario: The user likes a message
     Given a message is published
-    And a message is fetched
+    And a random message is fetched
     When another message is fetched
     Then the rank of the message is increased
 
 
 Scenario: A reading user does not affect ranking
     Given a message is published
-    And a message is fetched
+    And a random message is fetched
     When another message is fetched
     Then the rank of the message is not increased

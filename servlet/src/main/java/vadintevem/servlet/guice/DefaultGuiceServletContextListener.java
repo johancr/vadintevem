@@ -20,7 +20,6 @@ public class DefaultGuiceServletContextListener extends GuiceServletContextListe
     protected Injector getInjector() {
         return Guice.createInjector(
                 JerseyServletModuleFactory.create(),
-                new DefaultServletModule(),
                 GuiceModuleLoader.load());
     }
 }

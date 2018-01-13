@@ -1,7 +1,7 @@
 package vadintevem.history.stub;
 
-import vadintevem.entities.Author;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
 import vadintevem.history.History;
 import vadintevem.messages.Messages;
 
@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 
 public class HistoryStub implements History {
 
-    private static final Map<Author, Set<Long>> MESSAGES = new HashMap<>();
+    private static final Map<User, Set<Message>> MESSAGES = new HashMap<>();
     private final Messages messages;
 
     @Inject
@@ -21,20 +21,20 @@ public class HistoryStub implements History {
     }
 
     @Override
-    public List<Message> load(Author author) {
+    public List<Message> load(User user) {
         return messages.findAll().stream()
-                .filter(message -> inHistory(message.getId(), author))
+                .filter(message -> inHistory(message, user))
                 .collect(toList());
     }
 
     @Override
-    public void add(Message message, Author author) {
-        Set<Long> history = MESSAGES.getOrDefault(author, new HashSet<>());
-        history.add(message.getId());
-        MESSAGES.putIfAbsent(author, history);
+    public void update(Message message, User user) {
+        Set<Message> history = MESSAGES.getOrDefault(user, new HashSet<>());
+        history.add(message);
+        MESSAGES.putIfAbsent(user, history);
     }
 
-    private static boolean inHistory(Long messageId, Author author) {
-        return MESSAGES.getOrDefault(author, new HashSet<>()).contains(messageId);
+    private static boolean inHistory(Message message, User user) {
+        return MESSAGES.getOrDefault(user, new HashSet<>()).contains(message);
     }
 }

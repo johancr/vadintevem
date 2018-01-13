@@ -1,9 +1,9 @@
 package vadintevem.validation;
 
 import vadintevem.base.functional.Validation;
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 
 public interface AuthorValidator {
 
-    Validation<String, Author> validate(Author author);
+    Validation<String, User> validate(User user);
 }

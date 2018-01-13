@@ -24,11 +24,6 @@
 
         <dependency>
             <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
             <artifactId>authors-admin</artifactId>
         </dependency>
 

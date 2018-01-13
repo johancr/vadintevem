@@ -1,7 +1,7 @@
 package vadintevem.reader.impl;
 
 import vadintevem.authors.Authors;
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 import vadintevem.history.History;
 import vadintevem.message.selector.Algorithm;
@@ -15,7 +15,6 @@ import vadintevem.tracked.messages.TrackedMessages;
 
 import javax.inject.Inject;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -55,25 +54,25 @@ public class DefaultReaderInteractor implements ReaderInteractor {
 
     @Override
     public Optional<Message> findMessage(FindMessageRequest request) {
-        Optional<Message> found = findMessage(parse(request.getAlgorithm()), request.getAuthor());
-        found.ifPresent(updateHistory(request.getAuthor()));
+        Optional<Message> found = findMessage(parse(request.getAlgorithm()), request.getUser());
+        found.ifPresent(updateHistory(request.getUser()));
         return found;
     }
 
-    private Optional<Message> findMessage(Algorithm algorithm, Author author) {
+    private Optional<Message> findMessage(Algorithm algorithm, User user) {
         MessageSelector messageSelector = messageSelectorFactory.create(algorithm);
-        return messageSelector.selectBasedOn(author);
+        return messageSelector.selectBasedOn(user);
     }
 
-    private Consumer<Message> updateHistory(Author author) {
-        return message -> history.add(message, author);
+    private Consumer<Message> updateHistory(User user) {
+        return message -> history.update(message, user);
     }
 
     @Override
     public Optional<Message> nextMessage(NextMessageRequest request) {
         increaseRank(request.getPrevious());
-        Optional<Message> next = nextMessage(request.getAuthor());
-        next.ifPresent(updateHistory(request.getAuthor()));
+        Optional<Message> next = nextMessage(request.getUser());
+        next.ifPresent(updateHistory(request.getUser()));
         return next;
     }
 
@@ -84,14 +83,14 @@ public class DefaultReaderInteractor implements ReaderInteractor {
         }
     }
 
-    private Optional<Message> nextMessage(Author author) {
-        return trackedMessages.filterFind(author);
+    private Optional<Message> nextMessage(User user) {
+        return trackedMessages.filterFind(user);
     }
 
     @Override
-    public List<Message> loadHistory(Author author) {
-        List<Message> messages = history.load(author);
-        return authors.findWrittenBy(author)
+    public List<Message> loadHistory(User user) {
+        List<Message> messages = history.load(user);
+        return authors.findWrittenBy(user)
                 .map(filterAuthored(messages))
                 .fold(notFound -> messages, identity());
     }

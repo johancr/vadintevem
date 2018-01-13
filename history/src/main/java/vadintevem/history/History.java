@@ -1,13 +1,13 @@
 package vadintevem.history;
 
-import vadintevem.entities.Author;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
 
 import java.util.List;
 
 public interface History {
 
-    List<Message> load(Author author);
+    List<Message> load(User user);
 
-    void add(Message message, Author author);
+    void update(Message message, User user);
 }

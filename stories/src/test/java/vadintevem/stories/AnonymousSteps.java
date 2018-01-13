@@ -31,23 +31,33 @@ public class AnonymousSteps implements En {
                           State state) {
 
         Given("^a message is published$", () -> {
-            publisherInteractor.publish(MESSAGE, UNKNOWN_AUTHOR);
+            publisherInteractor.publish(MESSAGE, UNKNOWN_USER);
         });
 
         When("^a too long message is published$", () -> {
             int tooLong = 141;
-            Either<List<String>, Void> result = publisherInteractor.publish(Message.of(generate(tooLong)), UNKNOWN_AUTHOR);
+            Either<List<String>, Void> result = publisherInteractor.publish(Message.of(generate(tooLong)), UNKNOWN_USER);
             state.setPublishResult(result);
         });
 
-        When("^a message is fetched$", () -> {
+        When("^a random message is fetched$", () -> {
             Optional<Message> fetched = readerInteractor.findRandomMessage();
             state.setFetched(fetched);
         });
 
-        When("^another message is fetched$", () -> {
-            Optional<Message> fetched = readerInteractor.findMessage(FindMessageRequest.of(UNKNOWN_AUTHOR));
+        When("^a message is fetched$", () -> {
+            Optional<Message> fetched = readerInteractor.findMessage(FindMessageRequest.of(UNKNOWN_USER));
             state.setFetched(fetched);
+        });
+
+        When("^another message is fetched$", () -> {
+            Optional<Message> fetched = readerInteractor.findMessage(FindMessageRequest.of(UNKNOWN_USER));
+            state.setFetched(fetched);
+        });
+
+        When("^the history is fetched$", () -> {
+            Collection<Message> history = readerInteractor.loadHistory(UNKNOWN_USER);
+            state.setHistory(history);
         });
 
         Then("^the published message is fetched$", () -> {
@@ -93,6 +103,14 @@ public class AnonymousSteps implements En {
             Collection<Message> history = state.getHistory();
             assertThat(history.isEmpty(), is(true));
         });
+
+        Then("^the history contains the fetched message$", () -> {
+            Collection<Message> history = state.getHistory();
+            Optional<Message> fetched = state.getFetched();
+
+            assertThat(fetched.map(history::contains).orElse(false), is(true));
+        });
+
     }
 
     private static String generate(int length) {

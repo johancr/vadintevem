@@ -4,7 +4,7 @@ import vadintevem.authors.Authors;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
 import vadintevem.base.functional.Tuple;
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 import vadintevem.messages.Messages;
 import vadintevem.publisher.PublishMessageRequest;
@@ -40,34 +40,34 @@ public class DefaultPublisherInteractor implements PublisherInteractor {
     }
 
     @Override
-    public Either<List<String>, Void> publish(Message message, Author author) {
+    public Either<List<String>, Void> publish(Message message, User user) {
         return map2(messageValidator.validate(message),
-                authorValidator.validate(author), Tuple.create())
+                authorValidator.validate(user), Tuple.create())
                 .fold(valid -> onSuccess(valid._1, valid._2), Either::left);
     }
 
-    private Either<List<String>, Void> onSuccess(Message message, Author author) {
+    private Either<List<String>, Void> onSuccess(Message message, User user) {
         Message saved = messages.save(message);
         ranker.increase(saved);
-        authors.append(author, saved.getId());
+        authors.publish(user, saved);
         return Either.right(null);
     }
 
     @Override
     public Either<List<String>, Void> publish(PublishMessageRequest request) {
         return map2(messageValidator.validate(request.getMessage()),
-                authorValidator.validate(request.getAuthor()), Tuple.create())
+                authorValidator.validate(request.getUser()), Tuple.create())
                 .fold(valid -> onSuccess(request.getPrevious(), valid._1, valid._2), Either::left);
     }
 
-    private Either<List<String>, Void> onSuccess(Message previous, Message message, Author author) {
+    private Either<List<String>, Void> onSuccess(Message previous, Message message, User user) {
         ranker.decrease(previous);
-        return onSuccess(message, author);
+        return onSuccess(message, user);
     }
 
     @Override
-    public Either<String, Collection<Message>> findWrittenBy(Author author) {
-        return authors.findWrittenBy(author);
+    public Either<String, Collection<Message>> findWrittenBy(User user) {
+        return authors.findWrittenBy(user);
     }
 
 }

@@ -4,7 +4,7 @@ import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.messages.objectify.MessageEntity;
 
 import java.util.Collection;
@@ -31,8 +31,8 @@ public class AuthorEntity {
         // for objectify
     }
 
-    public static AuthorEntity from(Author author) {
-        return new AuthorEntity(author.getId());
+    public static AuthorEntity from(User user) {
+        return new AuthorEntity(user.getUsername());
     }
 
     public Collection<Ref<MessageEntity>> getAuthored() {

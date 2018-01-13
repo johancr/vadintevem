@@ -1,11 +1,11 @@
 package vadintevem.publisher;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 
 public abstract class PublishMessageRequest {
 
-    public static PublishMessageRequest of(Message previous, Message message, Author author) {
+    public static PublishMessageRequest of(Message previous, Message message, User user) {
         return new PublishMessageRequest() {
 
             @Override
@@ -19,13 +19,13 @@ public abstract class PublishMessageRequest {
             }
 
             @Override
-            public Author getAuthor() {
-                return author;
+            public User getUser() {
+                return user;
             }
         };
     }
 
     public abstract Message getPrevious();
     public abstract Message getMessage();
-    public abstract Author getAuthor();
+    public abstract User getUser();
 }

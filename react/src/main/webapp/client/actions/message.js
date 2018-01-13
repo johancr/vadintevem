@@ -7,10 +7,10 @@ import {LOAD_MESSAGE,
         } from '../constants/actionTypes.js';
 import {notify} from './notification.js';
 
-export function findMessage(algorithm, author, nextAction = () => {}) {
+export function findMessage(algorithm, username, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
-        return fetch(`/service/message/find?algorithm=${algorithm}&author=${author}`)
+        return fetch(`/service/message/find?algorithm=${algorithm}&username=${username}`)
             .then(response => {
                 if (response.ok) {
                     response.json().then(json => dispatch({type: MESSAGE_LOADED, message: json}));
@@ -24,10 +24,10 @@ export function findMessage(algorithm, author, nextAction = () => {}) {
     };
 }
 
-export function nextMessage(algorithm, author, previous, nextAction = () => {}) {
+export function nextMessage(algorithm, username, previous, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: LOAD_MESSAGE});
-        return fetch(`/service/message/next?algorithm=${algorithm}&author=${author}`,
+        return fetch(`/service/message/next?algorithm=${algorithm}&username=${username}`,
                     { method: 'POST',
                       body: JSON.stringify(previous),
                       headers: { "Content-Type": "application/json" }
@@ -45,12 +45,12 @@ export function nextMessage(algorithm, author, previous, nextAction = () => {}) 
     };
 }
 
-export function publishMessage(message, author, nextAction = () => {}) {
+export function publishMessage(message, username, nextAction = () => {}) {
     return dispatch => {
         dispatch({type: PUBLISH_MESSAGE});
         return fetch('/service/message',
                    { method: 'POST',
-                     body: JSON.stringify({message: {content: message}, author:{id: author}}),
+                     body: JSON.stringify({message: {content: message}, user:{username: username}}),
                      headers: { "Content-Type": "application/json" }
                    })
             .then((response) => {

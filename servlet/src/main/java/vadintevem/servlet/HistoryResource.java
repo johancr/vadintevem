@@ -1,6 +1,6 @@
 package vadintevem.servlet;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.reader.ReaderInteractor;
 
 import javax.inject.Inject;
@@ -27,9 +27,9 @@ public class HistoryResource {
     }
 
     @GET
-    public Response history(@QueryParam("author") String author) {
-        return Optional.ofNullable(author)
-                .map(Author::of)
+    public Response history(@QueryParam("username") String username) {
+        return Optional.ofNullable(username)
+                .map(User::of)
                 .map(readerInteractor::loadHistory)
                 .map(history -> history.stream().map(MessageDto::from).collect(toList()))
                 .map(Response::ok)

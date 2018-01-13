@@ -1,6 +1,6 @@
 package vadintevem.message.selector.impl;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.entities.Message;
 import vadintevem.message.selector.MessageSelector;
 import vadintevem.messages.Messages;
@@ -31,7 +31,7 @@ public class RandomMessageSelector implements MessageSelector {
     }
 
     @Override
-    public Optional<Message> selectBasedOn(Author author) {
+    public Optional<Message> selectBasedOn(User user) {
         return select();
     }
 

@@ -1,6 +1,6 @@
 package vadintevem.servlet;
 
-import vadintevem.entities.Author;
+import vadintevem.entities.User;
 import vadintevem.publisher.PublisherInteractor;
 
 import javax.inject.Inject;
@@ -24,10 +24,10 @@ public class AuthorResource {
         this.publisherInteractor = publisherInteractor;
     }
 
-    @Path("{id}/message")
+    @Path("{username}/message")
     @GET
-    public Response message(@PathParam("id") String id) {
-        return publisherInteractor.findWrittenBy(Author.of(id))
+    public Response message(@PathParam("username") String username) {
+        return publisherInteractor.findWrittenBy(User.of(username))
                 .fold(error -> Response.status(400).entity(ErrorDto.from(error)),
                         messages -> Response.ok(messages.stream().map(MessageDto::from).collect(toList())))
                 .build();

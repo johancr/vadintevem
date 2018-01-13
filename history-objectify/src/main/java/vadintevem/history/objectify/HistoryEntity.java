@@ -18,13 +18,13 @@ public class HistoryEntity {
     private Long id;
 
     @Index
-    private String author;
+    private String username;
 
     private Set<Ref<MessageEntity>> history;
 
-    public HistoryEntity(String author) {
+    public HistoryEntity(String username) {
         this();
-        this.author = author;
+        this.username = username;
     }
 
     public HistoryEntity() {
