@@ -4,6 +4,7 @@ import com.google.inject.Singleton;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
 import vadintevem.entities.Message;
+import vadintevem.events.Event;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -15,6 +16,7 @@ public class State {
     private Collection<Message> history;
     private Either<String, Collection<Message>> published;
     private Either<List<String>, Void> publishResult;
+    private Event event;
 
     public Optional<Message> getFetched() {
         return fetched;
@@ -46,5 +48,13 @@ public class State {
 
     public void setPublishResult(Either<List<String>,Void> publishResult) {
         this.publishResult = publishResult;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }

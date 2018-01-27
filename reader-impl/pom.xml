@@ -46,6 +46,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>authors</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>events</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

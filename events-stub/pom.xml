@@ -9,34 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>publisher-impl</artifactId>
+    <artifactId>events-stub</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>publisher</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>messages</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>ranking</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>validation</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>authors</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>vadintevem</groupId>
             <artifactId>events</artifactId>

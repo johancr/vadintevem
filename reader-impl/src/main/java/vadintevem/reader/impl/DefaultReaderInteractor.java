@@ -1,8 +1,9 @@
 package vadintevem.reader.impl;
 
 import vadintevem.authors.Authors;
-import vadintevem.entities.User;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
+import vadintevem.events.EventNotifier;
 import vadintevem.history.History;
 import vadintevem.message.selector.Algorithm;
 import vadintevem.message.selector.MessageSelector;
@@ -32,18 +33,21 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     private final MessageSelectorFactory messageSelectorFactory;
     private final Ranker ranker;
     private final Authors authors;
+    private final EventNotifier eventNotifier;
 
     @Inject
     public DefaultReaderInteractor(History history,
                                    TrackedMessages trackedMessages,
                                    MessageSelectorFactory messageSelectorFactory,
                                    Ranker ranker,
-                                   Authors authors) {
+                                   Authors authors,
+                                   EventNotifier eventNotifier) {
         this.history = history;
         this.trackedMessages = trackedMessages;
         this.messageSelectorFactory = messageSelectorFactory;
         this.ranker = ranker;
         this.authors = authors;
+        this.eventNotifier = eventNotifier;
     }
 
     @Override
@@ -73,7 +77,15 @@ public class DefaultReaderInteractor implements ReaderInteractor {
         increaseRank(request.getPrevious());
         Optional<Message> next = nextMessage(request.getUser());
         next.ifPresent(updateHistory(request.getUser()));
+        notifyAuthorOf(request.getPrevious());
         return next;
+    }
+
+    private void notifyAuthorOf(Message previous) {
+        if (previous.getId() != null) {
+            Optional<User> author = authors.findAuthorOf(previous);
+            author.ifPresent(a -> eventNotifier.notify(new MessageReadEvent(a)));
+        }
     }
 
     private void increaseRank(Message previous) {

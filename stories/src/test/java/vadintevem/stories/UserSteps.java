@@ -2,8 +2,10 @@ package vadintevem.stories;
 
 import cucumber.api.java8.En;
 import vadintevem.base.functional.Either;
-import vadintevem.entities.User;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
+import vadintevem.events.Event;
+import vadintevem.events.stub.EventNotifierStub;
 import vadintevem.publisher.PublishMessageRequest;
 import vadintevem.publisher.PublisherInteractor;
 import vadintevem.reader.FindMessageRequest;
@@ -14,6 +16,9 @@ import javax.inject.Inject;
 import java.util.Collection;
 import java.util.Optional;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static vadintevem.stories.Data.MESSAGE;
 import static vadintevem.stories.Data.REACTION;
 
@@ -22,7 +27,10 @@ public class UserSteps implements En {
     @Inject
     public UserSteps(ReaderInteractor readerInteractor,
                      PublisherInteractor publisherInteractor,
+                     EventNotifierStub eventNotifier,
                      State state) {
+
+        eventNotifier.add(state::setEvent);
 
         Given("^a message is published by user (\\w+)$", (String username) -> {
             publisherInteractor.publish(MESSAGE, User.of(username));
@@ -59,6 +67,11 @@ public class UserSteps implements En {
         When("^user (\\w+) fetches his published messages$", (String username) -> {
             Either<String, Collection<Message>> published = publisherInteractor.findWrittenBy(User.of(username));
             state.setPublished(published);
+        });
+
+        Then("^user (\\w+) is notified that his message was liked$", (String username) -> {
+            Event event = state.getEvent();
+            assertThat(event, is(notNullValue()));
         });
     }
 }

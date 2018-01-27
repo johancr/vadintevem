@@ -4,8 +4,8 @@ import vadintevem.authors.Authors;
 import vadintevem.base.functional.Either;
 import vadintevem.base.functional.List;
 import vadintevem.base.functional.Tuple;
-import vadintevem.entities.User;
 import vadintevem.entities.Message;
+import vadintevem.entities.User;
 import vadintevem.messages.Messages;
 import vadintevem.publisher.PublishMessageRequest;
 import vadintevem.publisher.PublisherInteractor;
@@ -69,5 +69,4 @@ public class DefaultPublisherInteractor implements PublisherInteractor {
     public Either<String, Collection<Message>> findWrittenBy(User user) {
         return authors.findWrittenBy(user);
     }
-
 }

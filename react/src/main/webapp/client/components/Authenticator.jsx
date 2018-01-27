@@ -5,6 +5,7 @@ import Input from 'Components/Input.jsx';
 import Button from 'Components/Button.jsx';
 import style from 'Css/authenticator.css';
 import {logIn, logOut} from '../actions/authentication.js';
+import {listenForEvents} from '../actions/events.js';
 
 class Authenticator extends Component {
 
@@ -22,7 +23,9 @@ class Authenticator extends Component {
     }
 
     onLogIn() {
-        this.props.logIn(this.state.username);
+        const {username} = this.state;
+        this.props.logIn(username);
+        this.props.listenForEvents(username);
     }
 
     onLogOut() {
@@ -55,6 +58,7 @@ class Authenticator extends Component {
 Authenticator.propTypes = {
     logIn: PropTypes.func,
     logOut: PropTypes.func,
+    listenForEvents: PropTypes.func,
 }
 
 const mapStateToProps = state => {
@@ -65,6 +69,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     logIn,
     logOut,
+    listenForEvents,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Authenticator);

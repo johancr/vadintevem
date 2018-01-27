@@ -4,10 +4,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import com.google.inject.Module;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
-import vadintevem.servlet.AuthorResource;
-import vadintevem.servlet.HistoryResource;
-import vadintevem.servlet.MessageResource;
-import vadintevem.servlet.RankingResource;
+import vadintevem.servlet.*;
 
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;

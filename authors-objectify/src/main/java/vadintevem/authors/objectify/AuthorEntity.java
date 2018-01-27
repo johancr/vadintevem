@@ -35,6 +35,10 @@ public class AuthorEntity {
         return new AuthorEntity(user.getUsername());
     }
 
+    public User toDomain() {
+        return User.of(username);
+    }
+
     public Collection<Ref<MessageEntity>> getAuthored() {
         return authored;
     }

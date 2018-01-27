@@ -25,6 +25,14 @@ public class AuthorsStub implements Authors, AuthorsAdmin {
     }
 
     @Override
+    public Optional<User> findAuthorOf(Message message) {
+        return USERS_MESSAGES.entrySet().stream()
+                .filter(entry -> entry.getValue().contains(message))
+                .map(Map.Entry::getKey)
+                .findAny();
+    }
+
+    @Override
     public void deleteAll() {
         USERS_MESSAGES.clear();
     }
