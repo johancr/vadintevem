@@ -291,13 +291,13 @@
             <dependency>
                 <groupId>org.eclipse.jetty.websocket</groupId>
                 <artifactId>websocket-server</artifactId>
-                <version>9.4.8.v20171121</version>
+                <version>9.3.18.v20170406</version>
             </dependency>
 
             <dependency>
                 <groupId>org.eclipse.jetty.websocket</groupId>
                 <artifactId>websocket-client</artifactId>
-                <version>9.4.8.v20171121</version>
+                <version>9.3.18.v20170406</version>
             </dependency>
 
             <dependency>

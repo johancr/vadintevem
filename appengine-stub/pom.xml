@@ -89,7 +89,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.7.v20170914</version>
+                <version>9.3.18.v20170406</version>
                 <configuration>
                     <httpConnector>
                         <port>8090</port>
