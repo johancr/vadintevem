@@ -21,3 +21,8 @@ export const SET_ALGORITHM = 'SET_ALGORITHM';
 
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
+
+export const LOAD_AUTHORED = 'LOAD_AUTHORED';
+export const AUTHORED_LOADED = 'AUTHORED_LOADED';
+
+export const MESSAGE_READ_EVENT = 'MESSAGE_READ_EVENT';

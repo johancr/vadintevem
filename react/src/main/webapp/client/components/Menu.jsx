@@ -8,6 +8,7 @@ import {READER_VIEW,
         INTERACTOR_VIEW,
         HISTORY_VIEW,
         EXPLORER_VIEW,
+        AUTHOR_VIEW,
 } from '../constants/views.js';
 import Authenticator from './Authenticator.jsx';
 
@@ -20,6 +21,7 @@ class Menu extends Component {
         this.setInteractorView = this.setInteractorView.bind(this);
         this.setHistoryView = this.setHistoryView.bind(this);
         this.setExplorerView = this.setExplorerView.bind(this);
+        this.setAuthorView = this.setAuthorView.bind(this);
     }
 
     setReaderView() {
@@ -36,6 +38,10 @@ class Menu extends Component {
 
     setExplorerView() {
         this.props.setView(EXPLORER_VIEW);
+    }
+
+    setAuthorView() {
+        this.props.setView(AUTHOR_VIEW);
     }
 
     render() {
@@ -63,6 +69,10 @@ class Menu extends Component {
                             <Button label = 'Top'
                                 onClick={this.setExplorerView}
                                 disabled={this.props.view === EXPLORER_VIEW}
+                            />
+                            <Button label = 'Author'
+                                onClick={this.setAuthorView}
+                                disabled={this.props.view === AUTHOR_VIEW}
                             />
                     </div>
                 </div>

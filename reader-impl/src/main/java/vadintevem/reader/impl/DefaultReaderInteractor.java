@@ -84,7 +84,7 @@ public class DefaultReaderInteractor implements ReaderInteractor {
     private void notifyAuthorOf(Message previous) {
         if (previous.getId() != null) {
             Optional<User> author = authors.findAuthorOf(previous);
-            author.ifPresent(a -> eventNotifier.notify(new MessageReadEvent(a)));
+            author.ifPresent(a -> eventNotifier.notify(new MessageReadEvent(a, previous)));
         }
     }
 
