@@ -1,11 +1,12 @@
 .container {
     display: flex;
     flex-flow: column;
-    border-style: solid;
-    border-color: rgb(0, 188, 212);
-    border-width: 0.5em;
+    background-image: linear-gradient(to bottom, rgb(0, 188, 212), transparent), linear-gradient(to bottom, rgb(0, 188, 212), transparent);
+    background-size: 0.5em 350px, 0.5em 350px;
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+    border-top: solid 0.5em rgb(0, 188, 212);
     min-height: 300px;
-    max-height: 450px;
 }
 
 .menu {
@@ -14,7 +15,6 @@
 .viewSwitcher {
     display: flex;
     justify-content: center;
-    overflow: scroll;
 }
 
 .notification {

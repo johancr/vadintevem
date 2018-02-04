@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Message from 'Components/Message.jsx';
-import style from 'Css/reactiveMessage.css';
 import AnnotatedMessage from 'Components/AnnotatedMessage.jsx';
 import {connect} from 'react-redux';
 

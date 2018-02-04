@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Message from 'Components/Message.jsx';
-import style from 'Css/reactiveMessage.css';
+import style from 'Css/annotatedMessage.css';
 
 export default function AnnotatedMessage(props) {
 
