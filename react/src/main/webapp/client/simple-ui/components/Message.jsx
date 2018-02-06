@@ -6,7 +6,7 @@ class Message extends Component {
         const {content} = this.props;
 
         return (
-            <p style={{maxWidth: '100%', wordWrap: 'break-word'}}>{content}</p>
+            <p style={{wordWrap: 'break-word'}}>{content}</p>
          );
     }
 }

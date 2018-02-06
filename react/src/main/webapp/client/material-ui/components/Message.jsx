@@ -11,21 +11,22 @@ class Message extends Component {
         const {content, isLoadingMessage} = this.props;
 
         return (
-                <Paper style={{paddingTop: 10,
-                        paddingBottom: 10,
-                        paddingLeft: 10,
-                        paddingRight: 0,
-                        marginTop:10,
-                        marginRight: 10,
-                        marginBottom: 10,
-                        overflowY: 'auto',
+                <Paper style={{paddingTop: 5,
+                        paddingLeft: 5,
+                        paddingRight: 5,
+                        paddingBottom: 5,
+                        marginTop: 0,
+                        minHeight: 36,
                         width: 200,
-                        height: 100}}
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: isLoadingMessage ? 'row' : 'column',
+                        textAlgin: isLoadingMessage ? 'center' : 'left'}}
                         className={style.shadow}>
                     {this.props.children}
                     {isLoadingMessage
-                        ? <CircularProgress style={{ marginTop: 15, marginLeft: 65 }} />
-                        : <p style={{maxWidth: '100%', maxHeight: '100%', wordWrap: 'break-word', margin: 0}}>{content}</p>
+                        ? <CircularProgress size={25} thickness={2.5} />
+                        : <p style={{maxWidth: '100%', maxHeight: '100%', wordWrap: 'break-word', margin: 0, overflow: 'hidden'}}>{content}</p>
                     }
                 </Paper>
          );

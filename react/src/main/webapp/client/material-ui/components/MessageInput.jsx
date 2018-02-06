@@ -5,13 +5,12 @@ import style from '../../css/colors.css';
 export default function MessageInput(props) {
 
     return (
-        <Paper style={{paddingTop: 5,
-                        paddingBottom: 10,
-                        paddingLeft: 5,
-                        paddingRight: 10,
-                        marginBottom: 10,
+        <Paper style={{paddingTop: 0,
+                        paddingBottom: 0,
+                        paddingLeft: 0,
+                        paddingRight: 5,
                         width: 200,
-                        height: 100}}
+                        minHeight: 36 }}
                className={style.shadow}
          >
             <textarea style={{ width: '100%',

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {loadAuthored} from '../actions/author.js';
 import ReactiveMessage from './ReactiveMessage.jsx';
+import style from 'Css/authorView.css';
 
 const messageRead = '↗';
 
@@ -20,7 +21,7 @@ class AuthorView extends Component {
     render() {
         const {authored} = this.props;
         return (
-            <div>
+            <div className={style.container}>
                 {
                   authored.map((message, index) =>
                     <ReactiveMessage message={message} reaction={messageRead} key={index} />

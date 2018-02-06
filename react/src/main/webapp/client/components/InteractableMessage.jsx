@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {INTERACTOR_VIEW} from '../constants/views.js';
 import {setView} from '../actions/view.js';
 import {setMessage} from '../actions/message.js';
-import style from '../css/interactableMessage.css';
+import style from 'Css/interactableMessage.css';
 
 class InteractableMessage extends Component {
 
