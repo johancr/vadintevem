@@ -1,11 +1,12 @@
 import React from 'react';
 import style from '../../css/colors.css';
+import TextArea from 'react-textarea-autosize';
 
 export default function MessageInput(props) {
 
     return (
         <div>
-            <textarea onChange={props.onChange}
+            <TextArea onChange={props.onChange}
                        value={props.text}
             />
         </div>
