@@ -63,7 +63,7 @@
                                     <goal>yarn</goal>
                                 </goals>
                                 <configuration>
-                                    <arguments>build --env.ui=${ui}</arguments>
+                                    <arguments>build -p --env.ui=${ui}</arguments>
                                 </configuration>
                             </execution>
                         </executions>
