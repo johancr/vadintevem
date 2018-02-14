@@ -42,6 +42,9 @@
         <module>events</module>
         <module>events-stub</module>
         <module>events-websocket</module>
+        <module>gce-events</module>
+        <module>events-remote</module>
+        <module>servlet-events</module>
     </modules>
 
     <groupId>vadintevem</groupId>
@@ -283,6 +286,19 @@
             </dependency>
 
             <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>events-remote</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>vadintevem</groupId>
+                <artifactId>servlet-events</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+
+            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>2.9.2</version>
@@ -298,6 +314,12 @@
                 <groupId>org.eclipse.jetty.websocket</groupId>
                 <artifactId>websocket-client</artifactId>
                 <version>9.3.18.v20170406</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.5</version>
             </dependency>
 
             <dependency>
@@ -412,6 +434,12 @@
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>1.6</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.3.18.v20170406</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -70,6 +70,11 @@
             <groupId>vadintevem</groupId>
             <artifactId>authors-stub</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>events-remote</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,7 +94,6 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.18.v20170406</version>
                 <configuration>
                     <httpConnector>
                         <port>8090</port>

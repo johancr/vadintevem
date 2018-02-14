@@ -4,9 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+    <servlet>
+        <servlet-name>events</servlet-name>
+        <servlet-class>vadintevem.servlet.events.EventsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>events</servlet-name>
+        <url-pattern>/ws/events</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>guiceFilter</filter-name>
@@ -19,6 +25,6 @@
     </filter-mapping>
 
     <listener>
-        <listener-class>vadintevem.servlet.guice.DefaultGuiceServletContextListener</listener-class>
+        <listener-class>vadintevem.servlet.events.guice.EventsGuiceServletContextListener</listener-class>
     </listener>
 </web-app>

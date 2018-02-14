@@ -8,9 +8,8 @@ export default function AnnotatedMessage(props) {
     const {message, annotate, annotation} = props;
     return (
             <div>
-                <Message content={message.content}>
-                    { annotate ? <span className={style.annotation}>{annotation}</span> : undefined}
-                </Message>
+                <Message content={message.content} />
+                { annotate ? <span className={style.annotation}>{annotation}</span> : undefined}
             </div>
         );
 }

@@ -1,4 +1,4 @@
-package vadintevem.servlet;
+package vadintevem.servlet.events;
 
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeRequest;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeResponse;

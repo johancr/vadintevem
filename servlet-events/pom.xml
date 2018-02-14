@@ -9,20 +9,28 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>servlet</artifactId>
+    <artifactId>servlet-events</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <type>jar</type>
-            <scope>provided</scope>
+            <groupId>vadintevem</groupId>
+            <artifactId>base</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>vadintevem</groupId>
+            <artifactId>events-websocket</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
         </dependency>
 
         <dependency>
@@ -33,36 +41,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-server</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>base</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>entities</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>reader</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>publisher</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>vadintevem</groupId>
-            <artifactId>explorer</artifactId>
         </dependency>
     </dependencies>
 
@@ -76,4 +54,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

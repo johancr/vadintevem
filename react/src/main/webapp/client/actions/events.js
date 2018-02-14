@@ -5,6 +5,11 @@ import moment from 'moment';
 
 export function listenForEvents(username) {
     return dispatch => {
+        connect(dispatch, username);
+    };
+}
+
+function connect(dispatch, username) {
         const ws = new WebSocket(`ws://localhost:8080/ws/events?username=${username}`);
         ws.onmessage = function(event) {
             const msg = JSON.parse(event.data);
@@ -15,5 +20,8 @@ export function listenForEvents(username) {
                     timestamp: moment(),
                 });
         };
-    };
+        ws.onclose = function(event) {
+            connect(dispatch, username);
+        };
 }
+

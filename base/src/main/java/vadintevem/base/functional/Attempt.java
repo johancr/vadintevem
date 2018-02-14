@@ -17,6 +17,18 @@ public abstract class Attempt<T> {
         }
     }
 
+    public static <T> Attempt<T> checkedAttempt(ThrowingSupplier<T> operation) {
+
+        try
+        {
+            return Attempt.success(operation.get());
+        }
+        catch (Exception ex)
+        {
+            return Attempt.failure(ex);
+        }
+    }
+
     public static <T> Attempt<T> success(T value) {
         return new Success<>(value);
     }

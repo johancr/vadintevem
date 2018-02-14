@@ -23,7 +23,6 @@ class Message extends Component {
                         flexDirection: isLoadingMessage ? 'row' : 'column',
                         textAlgin: isLoadingMessage ? 'center' : 'left'}}
                         className={style.shadow}>
-                    {this.props.children}
                     {isLoadingMessage
                         ? <CircularProgress size={25} thickness={2.5} />
                         : <p style={{maxWidth: '100%', maxHeight: '100%', wordWrap: 'break-word', margin: 0, overflow: 'hidden'}}>{content}</p>

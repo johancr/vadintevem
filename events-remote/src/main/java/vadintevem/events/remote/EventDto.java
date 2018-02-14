@@ -1,4 +1,4 @@
-package vadintevem.events.websocket;
+package vadintevem.events.remote;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import vadintevem.events.Event;
