@@ -8,6 +8,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import style from 'Css/index.css';
+import commonStyle from './css/index.css';
 import view from './reducers/view.js';
 import history from './reducers/history.js';
 import ranking from './reducers/ranking.js';
@@ -36,7 +37,7 @@ let reducers = combineReducers({
 let store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const muiTheme = getMuiTheme({
-    fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif'
+    fontFamily: '"Helvetica Neue",Helvetica,Arimo,Arial,sans-serif'
 });
 
 ReactDOM.render(
