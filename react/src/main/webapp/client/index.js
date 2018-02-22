@@ -37,7 +37,7 @@ let reducers = combineReducers({
 let store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 const muiTheme = getMuiTheme({
-    fontFamily: '"Helvetica Neue",Helvetica,Arimo,Arial,sans-serif'
+    fontFamily: 'Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif'
 });
 
 ReactDOM.render(
