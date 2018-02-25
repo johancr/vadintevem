@@ -4,8 +4,6 @@ export const PUBLISH_MESSAGE = 'PUBLISH_MESSAGE';
 export const MESSAGE_PUBLISHED = 'MESSAGE_PUBLISHED';
 export const MESSAGE_NOT_FOUND = 'MESSAGE_NOT_FOUND';
 
-export const SET_VIEW = 'SET_VIEW';
-
 export const LOAD_HISTORY = 'LOAD_HISTORY';
 export const HISTORY_LOADED =  'HISTORY_LOADED';
 export const SAVE_HISTORY = 'SAVE_HISTORY';

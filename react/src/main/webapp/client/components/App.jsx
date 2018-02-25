@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import MessagePresenter from './MessagePresenter.jsx';
 import fetch from 'isomorphic-fetch';
 import {MESSAGE_LOADED} from '../constants/actionTypes.js';
@@ -12,8 +12,9 @@ import style from 'Css/app.css';
 import NotificationPresenter from './NotificationPresenter.jsx';
 import {RANDOM} from '../constants/algorithms.js';
 import {setAlgorithm} from '../actions/algorithm.js';
+import {withRouter} from 'react-router-dom';
 
-class App extends React.Component {
+class App extends Component {
 
   componentDidMount() {
     this.props.setAlgorithm(RANDOM);
@@ -46,4 +47,4 @@ const mapDispatchToProps = {
         setAlgorithm,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

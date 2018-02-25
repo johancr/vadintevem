@@ -1,97 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Button from 'Components/Button.jsx';
 import style from 'Css/menu.css';
-import {setView} from '../actions/view.js';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {READER_VIEW,
-        INTERACTOR_VIEW,
-        HISTORY_VIEW,
-        EXPLORER_VIEW,
-        AUTHOR_VIEW,
-} from '../constants/views.js';
 import Authenticator from './Authenticator.jsx';
+import LinkButton from './LinkButton.jsx';
 
-class Menu extends Component {
+export default function Menu(props){
 
-    constructor(props) {
-        super(props);
+    return (
+        <div className={style.menu} >
 
-        this.setReaderView = this.setReaderView.bind(this);
-        this.setInteractorView = this.setInteractorView.bind(this);
-        this.setHistoryView = this.setHistoryView.bind(this);
-        this.setExplorerView = this.setExplorerView.bind(this);
-        this.setAuthorView = this.setAuthorView.bind(this);
-    }
-
-    setReaderView() {
-        this.props.setView(READER_VIEW);
-    }
-
-    setInteractorView() {
-        this.props.setView(INTERACTOR_VIEW);
-    }
-
-    setHistoryView() {
-        this.props.setView(HISTORY_VIEW);
-    }
-
-    setExplorerView() {
-        this.props.setView(EXPLORER_VIEW);
-    }
-
-    setAuthorView() {
-        this.props.setView(AUTHOR_VIEW);
-    }
-
-    render() {
-        return (
-            <div className={style.menu} >
-                <span className={style.menu__header}>VIV</span>
-
-                <div>
-                    <div className={style.authenticator}>
-                        <Authenticator />
-                    </div>
-                    <div className={style.menu__buttons}>
-                            <Button label = 'Read'
-                                onClick={this.setReaderView}
-                                disabled={this.props.view === READER_VIEW}
-                            />
-                            <Button label = 'Interact'
-                                onClick={this.setInteractorView}
-                                disabled={this.props.view === INTERACTOR_VIEW}
-                            />
-                            <Button label = 'History'
-                                onClick={this.setHistoryView}
-                                disabled={this.props.view === HISTORY_VIEW}
-                            />
-                            <Button label = 'Top'
-                                onClick={this.setExplorerView}
-                                disabled={this.props.view === EXPLORER_VIEW}
-                            />
-                            <Button label = 'Author'
-                                onClick={this.setAuthorView}
-                                disabled={this.props.view === AUTHOR_VIEW}
-                            />
-                    </div>
+            <div>
+                <div className={style.authenticator}>
+                    <Authenticator />
+                </div>
+                <div className={style.menu__buttons}>
+                        <LinkButton to='/' label='Read' />
+                        <LinkButton to='/interact' label='Interact' />
+                        <LinkButton to='/history' label='History' />
+                        <LinkButton to='/top' label='Top' />
+                        <LinkButton to='/author' label='Author' />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
-
-Menu.propTypes = {
-    setView: PropTypes.func
-}
-
-const mapStateToProps = state => {
-    const {view} = state;
-    return {view};
-}
-
-const mapDispatchToProps = {
-        setView
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);

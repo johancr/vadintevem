@@ -1,53 +1,20 @@
 import React, {Component} from 'react';
 import ReaderView from './ReaderView.jsx';
 import InteractorView from './InteractorView.jsx';
-import {READER_VIEW,
-        INTERACTOR_VIEW,
-        HISTORY_VIEW,
-        EXPLORER_VIEW,
-        AUTHOR_VIEW,
-} from '../constants/views.js';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 import HistoryView from './HistoryView.jsx';
 import ExplorerView from './ExplorerView.jsx';
 import AuthorView from './AuthorView.jsx';
+import {Route} from 'react-router-dom';
 
-class ViewSwitcher extends Component {
+export default function ViewSwitcher() {
 
-    constructor(props) {
-        super(props);
-
-        this.renderView = this.renderView.bind(this);
-    }
-
-    renderView() {
-        switch(this.props.view) {
-            case READER_VIEW:
-                return <ReaderView />
-            case INTERACTOR_VIEW:
-                return <InteractorView />
-            case HISTORY_VIEW:
-                return <HistoryView />
-            case EXPLORER_VIEW:
-                return <ExplorerView />
-            case AUTHOR_VIEW:
-                return <AuthorView />
-        }
-    }
-
-    render() {
-        return this.renderView();
-    }
+    return (
+        <div>
+            <Route exact path='/' component={ReaderView} />
+            <Route path='/interact' component={InteractorView} />
+            <Route path='/history' component={HistoryView} />
+            <Route path='/top' component={ExplorerView} />
+            <Route path='/author' component={AuthorView} />
+        </div>
+    );
 }
-
-ViewSwitcher.propTypes = {
-    view: PropTypes.string
-}
-
-const mapStateToProps = state => {
-    const {view} = state;
-    return {view};
-}
-
-export default connect(mapStateToProps)(ViewSwitcher);

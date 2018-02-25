@@ -9,7 +9,6 @@ import thunkMiddleware from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import style from 'Css/index.css';
 import commonStyle from './css/index.css';
-import view from './reducers/view.js';
 import history from './reducers/history.js';
 import ranking from './reducers/ranking.js';
 import notification from './reducers/notification.js';
@@ -18,6 +17,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import authentication from './reducers/authentication.js';
 import authored from './reducers/authored.js';
 import event from './reducers/event.js';
+import {HashRouter as Router} from 'react-router-dom';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,7 +25,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 let reducers = combineReducers({
     message,
     isLoadingMessage,
-    view,
     history,
     ranking,
     notification,
@@ -42,10 +41,12 @@ const muiTheme = getMuiTheme({
 
 ReactDOM.render(
     <Provider store={store}>
-        <MuiThemeProvider muiTheme={muiTheme}>
-            <div className={style.container}>
-                <App/>
-            </div>
-        </MuiThemeProvider>
+        <Router>
+            <MuiThemeProvider muiTheme={muiTheme}>
+                <div className={style.container}>
+                    <App/>
+                </div>
+            </MuiThemeProvider>
+        </Router>
     </Provider>
     , document.getElementById('root'));
