@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 
 export default function Button(props) {
 
+    const style = {
+        fontWeight: props.selected ? 'bolder' : 'normal',
+    };
+
     return (
-        <button onClick={props.onClick}
+        <button style={style} onClick={props.onClick}
             disabled={props.disabled}>
             {props.label}
          </button>

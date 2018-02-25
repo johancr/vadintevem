@@ -1,26 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Button from 'Components/Button.jsx';
 import style from 'Css/menu.css';
 import Authenticator from './Authenticator.jsx';
 import LinkButton from './LinkButton.jsx';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
-export default function Menu(props){
+class Menu extends Component {
 
-    return (
-        <div className={style.menu} >
+    constructor(props) {
+        super(props);
+    }
 
-            <div>
-                <div className={style.authenticator}>
-                    <Authenticator />
-                </div>
-                <div className={style.menu__buttons}>
-                        <LinkButton to='/' label='Read' />
-                        <LinkButton to='/interact' label='Interact' />
-                        <LinkButton to='/history' label='History' />
-                        <LinkButton to='/top' label='Top' />
-                        <LinkButton to='/author' label='Author' />
+
+    render() {
+        const {authenticated} = this.props.authentication;
+
+        return (
+            <div className={style.menu} >
+                <div>
+                    <div className={style.authenticator}>
+                        <Authenticator />
+                    </div>
+                    <div className={style.menu__buttons}>
+                            <LinkButton to='/' label='Read' />
+                            <LinkButton to='/interact' label='Interact' />
+                            <LinkButton to='/top' label='Top' />
+                            <LinkButton to='/history' label='History' disabled={!authenticated} />
+                            <LinkButton to='/author' label='Author' disabled={!authenticated} />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
+
+const mapStateToProps = state => {
+    const {authentication} = state;
+    return {authentication};
+}
+
+export default withRouter(connect(mapStateToProps)(Menu));

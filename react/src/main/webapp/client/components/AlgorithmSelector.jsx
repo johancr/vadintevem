@@ -19,6 +19,8 @@ class AlgorithmSelector extends Component {
     }
 
     render() {
+        const {authenticated} = this.props.authentication;
+
         return (
             <Selector label='Algorithm'
                       value={this.props.algorithm}
@@ -26,7 +28,7 @@ class AlgorithmSelector extends Component {
                       style={{width: 200}} >
                 <SelectorItem value={RANDOM} label='Random' />
                 <SelectorItem value={POPULAR} label='Popular' />
-                <SelectorItem value={UNREAD} label='Unread' />
+                <SelectorItem value={UNREAD} label='Unread' disabled={!authenticated} />
             </Selector>
         );
     }
@@ -38,8 +40,8 @@ AlgorithmSelector.propTypes = {
 }
 
 const mapStateToProps = state => {
-    const {algorithm} = state;
-    return {algorithm};
+    const {algorithm, authentication} = state;
+    return {algorithm, authentication};
 }
 
 const mapDispatchToProps = {

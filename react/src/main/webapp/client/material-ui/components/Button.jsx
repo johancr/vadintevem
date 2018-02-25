@@ -8,6 +8,7 @@ export default function Button(props) {
         <RaisedButton onClick={props.onClick}
             label={props.label}
             disabled={props.disabled}
+            primary={props.selected}
          />
     );
 }
@@ -16,4 +17,5 @@ Button.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string,
   disabled: PropTypes.bool,
+  selected: PropTypes.bool,
 }

@@ -4,7 +4,7 @@ class SelectorItem extends Component {
 
     render() {
         return (
-                <option value={this.props.value}>{this.props.label}</option>
+                <option value={this.props.value} disabled={this.props.disabled}>{this.props.label}</option>
         );
     }
 }

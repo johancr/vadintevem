@@ -1,6 +1,4 @@
 .menu {
-    display: flex;
-    justify-content: space-between;
 }
 
 .menu__header {
