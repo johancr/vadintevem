@@ -8,11 +8,18 @@
     font-family: inherit;
 }
 
+.innerContainer {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
 .menu {
 }
 
 .viewSwitcher {
-    max-height: 100%;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .notification {

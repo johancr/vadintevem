@@ -23,12 +23,16 @@ class App extends Component {
   render() {
     return (
      <div className={style.container}>
-        <Menu />
-        <div className={style.viewSwitcher}>
-            <ViewSwitcher />
-        </div>
-        <div className={style.notification}>
-            <NotificationPresenter />
+        <div className={style.innerContainer}>
+            <div className={style.viewSwitcher}>
+                <ViewSwitcher />
+            </div>
+            <div className={style.notification}>
+                <NotificationPresenter />
+            </div>
+            <div className={style.menu}>
+                <Menu />
+            </div>
         </div>
      </div>
      );

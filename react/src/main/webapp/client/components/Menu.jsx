@@ -19,15 +19,15 @@ class Menu extends Component {
         return (
             <div className={style.menu} >
                 <div>
-                    <div className={style.authenticator}>
-                        <Authenticator />
-                    </div>
                     <div className={style.menu__buttons}>
                             <LinkButton to='/' label='Read' />
                             <LinkButton to='/interact' label='Interact' />
                             <LinkButton to='/top' label='Top' />
                             <LinkButton to='/history' label='History' disabled={!authenticated} />
                             <LinkButton to='/author' label='Author' disabled={!authenticated} />
+                    </div>
+                    <div className={style.authenticator}>
+                        <Authenticator />
                     </div>
                 </div>
             </div>

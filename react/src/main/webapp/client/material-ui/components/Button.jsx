@@ -9,6 +9,8 @@ export default function Button(props) {
             label={props.label}
             disabled={props.disabled}
             primary={props.selected}
+            style={{minWidth: '0'}}
+            labelStyle={{fontSize: '0.6em'}}
          />
     );
 }

@@ -16,12 +16,11 @@ class Message extends Component {
                         paddingRight: 5,
                         paddingBottom: 5,
                         marginTop: 0,
-                        minHeight: 36,
-                        width: 200,
+                        width: '13em',
                         display: 'flex',
                         justifyContent: 'center',
                         flexDirection: isLoadingMessage ? 'row' : 'column',
-                        textAlgin: isLoadingMessage ? 'center' : 'left'}}
+                        textAlign: isLoadingMessage ? 'center' : 'left'}}
                         className={style.shadow}>
                     {this.props.children}
                     {isLoadingMessage

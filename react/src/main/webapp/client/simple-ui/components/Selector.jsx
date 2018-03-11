@@ -12,7 +12,7 @@ class Selector extends Component {
     }
 
     render() {
-        return (<select onChange={this.onChange} >
+        return (<select style={{width: 'fit-content'}} onChange={this.onChange} >
                     {this.props.children}
                 </select>);
     }

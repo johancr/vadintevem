@@ -1,33 +1,20 @@
 .menu {
-    display: flex;
-    justify-content: space-between;
-    margin: 6px 0px 6px 0px;
-    flex-shrink: 0;
-}
-
-.menu__header {
-    font-size: 1.5em;
-    margin-left: 0.5em;
-    color: rgb(0, 188, 212);
-    font-family: Roboto, "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
 }
 
 .menu__buttons {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
     margin-top: 5px;
-    margin-left: 12px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px
 }
 
 .menu__buttons > * {
-    margin-right: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .authenticator {
    display: flex;
    justify-content: flex-end;
-   margin-right: 12px;
+    margin-right: 5px
 }

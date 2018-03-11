@@ -10,8 +10,8 @@ export default function MessageInput(props) {
                         paddingBottom: 0,
                         paddingLeft: 0,
                         paddingRight: 5,
-                        width: 200,
-                        minHeight: 36 }}
+                        width: '13em',
+                        minHeight: '2em' }}
                className={style.shadow}
          >
             <TextArea style={{ width: '100%',

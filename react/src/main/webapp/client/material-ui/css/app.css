@@ -1,20 +1,27 @@
 .container {
-    display: flex;
-    flex-flow: column;
-    background-image: linear-gradient(to bottom, rgb(0, 188, 212), transparent), linear-gradient(to bottom, rgb(0, 188, 212), transparent);
-    background-size: 0.5em 350px, 0.5em 350px;
+    background-image: linear-gradient(to bottom, transparent, rgb(0, 188, 212), transparent),
+                      linear-gradient(to bottom, transparent, rgb(0, 188, 212), transparent);
+    background-size: 0.5em 20em, 0.5em 20em;
     background-position: top left, top right;
     background-repeat: no-repeat;
-    border-top: solid 0.5em rgb(0, 188, 212);
-    min-height: 350px;
+    max-width: 23em;
+    height: 20em;
+    width: 100%;
 }
 
-.menu {
+.innerContainer {
+    display: flex;
+    flex-flow: column;
+    margin-right: 8px;
+    margin-left: 8px;
+    height: 100%;
 }
 
 .viewSwitcher {
     display: flex;
     justify-content: center;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .notification {
